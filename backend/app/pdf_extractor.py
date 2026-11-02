@@ -1,6 +1,4 @@
-
-import fitz
-
+import pymupdf
 
 def extract_pdf_text(pdf_bytes: bytes) -> list[dict]:
     """
@@ -12,7 +10,7 @@ def extract_pdf_text(pdf_bytes: bytes) -> list[dict]:
 
     pages = []
 
-    with fitz.open(stream=pdf_bytes, filetype="pdf") as pdf:
+    with pymupdf.open(stream=pdf_bytes, filetype="pdf") as pdf:
         for page_number, page in enumerate(pdf, start=1):
             text = page.get_text("text").strip()
 
