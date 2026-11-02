@@ -186,3 +186,50 @@ def download_document(
             )
         },
     )
+    
+@app.delete("/documents/{document_id}")
+def delete_document(
+    document_id: int,
+    db: Session = Depends(get_db),
+):
+    # Find document in PostgreSQL
+    document = (
+        db.query(Document)
+        .filter(Document.id == document_id)
+        .first()
+    )
+
+    if not document:
+        raise HTTPException(
+            status_code=404,
+            detail="Document not found.",
+        )
+
+    # Delete original PDF from SeaweedFS
+    try:
+        s3_client.delete_object(
+            Bucket=BUCKET_NAME,
+            Key=document.object_key,
+        )
+    except Exception:
+        raise HTTPException(
+            status_code=502,
+            detail="Failed to delete document from storage.",
+        )
+
+    # Delete metadata from PostgreSQL
+    try:
+        db.delete(document)
+        db.commit()
+
+    except Exception:
+        db.rollback()
+        raise HTTPException(
+            status_code=500,
+            detail="Failed to delete document metadata.",
+        )
+
+    return {
+        "message": "Document deleted successfully.",
+        "document_id": document_id,
+    }
