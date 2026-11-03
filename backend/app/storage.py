@@ -40,3 +40,9 @@ def download_file(object_key, destination):
         object_key,
         str(destination),
     )
+
+
+def download_file_bytes(object_key) -> bytes:
+    """Download an object into memory for document processing."""
+    response = s3_client.get_object(Bucket=BUCKET_NAME, Key=object_key)
+    return response["Body"].read()

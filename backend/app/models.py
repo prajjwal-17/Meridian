@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import Column, Integer, ForeignKey, Text, UniqueConstraint
+from sqlalchemy import Column, Integer, ForeignKey, Text, UniqueConstraint, Index
 
 from pgvector.sqlalchemy import Vector
 
@@ -51,4 +51,77 @@ class DocumentChunk(Base):
             "chunk_index",
             name="uq_document_page_chunk"
         ),
+    )
+
+
+class Entity(Base):
+    """A normalized, retrievable concept mentioned by one or more chunks."""
+
+    __tablename__ = "entities"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    normalized_name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
+    entity_type: Mapped[str] = mapped_column(String(50), nullable=False)
+
+    __table_args__ = (
+        Index("ix_entities_entity_type", "entity_type"),
+        Index("ix_entities_name", "name"),
+    )
+
+
+class ChunkEntityMention(Base):
+    """Associates an entity with the document chunk where it was mentioned."""
+
+    __tablename__ = "chunk_entity_mentions"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    chunk_id: Mapped[int] = mapped_column(
+        Integer,
+        ForeignKey("document_chunks.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    entity_id: Mapped[int] = mapped_column(
+        Integer,
+        ForeignKey("entities.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    mention_count: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+
+    __table_args__ = (
+        UniqueConstraint("chunk_id", "entity_id", name="uq_chunk_entity_mention"),
+    )
+
+
+class EntityRelationship(Base):
+    """A directed, typed relationship between two normalized entities."""
+
+    __tablename__ = "entity_relationships"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    source_entity_id: Mapped[int] = mapped_column(
+        Integer,
+        ForeignKey("entities.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    target_entity_id: Mapped[int] = mapped_column(
+        Integer,
+        ForeignKey("entities.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    relationship_type: Mapped[str] = mapped_column(String(100), nullable=False)
+    weight: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+
+    __table_args__ = (
+        UniqueConstraint(
+            "source_entity_id",
+            "target_entity_id",
+            "relationship_type",
+            name="uq_entity_relationship",
+        ),
+        Index("ix_entity_relationship_target", "target_entity_id"),
     )

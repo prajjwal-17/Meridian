@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 
 from app.database import Base, engine
 from app.dependencies import get_db
+from app.document_processor import DocumentProcessingError, process_document
 from app.models import Document
 from app.storage import s3_client, BUCKET_NAME
 
@@ -107,6 +108,18 @@ async def upload_document(
             status_code=500,
             detail="Failed to save document metadata.",
         )
+
+    try:
+        process_document(db, document.id)
+        db.refresh(document)
+    except DocumentProcessingError as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=(
+                f"Document uploaded but processing failed for document {document.id}. "
+                f"Retry with the document processing command. {exc}"
+            ),
+        ) from exc
 
     return {
         "message": "Document uploaded successfully.",

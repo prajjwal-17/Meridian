@@ -1,0 +1,250 @@
+{
+  "communities": {
+    "0": [
+      "backend_app_dependencies",
+      "backend_app_dependencies_get_db",
+      "backend_app_main",
+      "backend_app_main_delete_document",
+      "backend_app_main_download_document",
+      "backend_app_main_get_documents",
+      "backend_app_main_health_check",
+      "backend_app_main_py_session",
+      "backend_app_main_upload_document",
+      "delete",
+      "fastapi",
+      "fastapi_responses",
+      "get",
+      "io",
+      "post",
+      "uploadfile",
+      "uuid"
+    ],
+    "1": [
+      "backend_app_storage",
+      "backend_app_storage_download_file",
+      "backend_app_storage_rationale_25",
+      "backend_app_storage_rationale_37",
+      "backend_app_storage_upload_file",
+      "backend_scripts_test_file_storage",
+      "backend_scripts_test_file_storage_calculate_checksum",
+      "backend_scripts_test_storage",
+      "backend_scripts_test_storage_connection",
+      "boto3",
+      "botocore_config",
+      "botocore_exceptions",
+      "dotenv",
+      "hashlib",
+      "os"
+    ],
+    "2": [
+      "backend_app_bm25_retrieval",
+      "backend_app_bm25_retrieval_bm25_search",
+      "backend_app_bm25_retrieval_py_session",
+      "backend_app_bm25_retrieval_tokenize",
+      "backend_app_hybrid_retrieval",
+      "backend_app_hybrid_retrieval_hybrid_search",
+      "backend_app_hybrid_retrieval_py_session",
+      "backend_scripts_test_bm25_search",
+      "backend_scripts_test_hybrid_search",
+      "collections",
+      "math",
+      "re"
+    ],
+    "3": [
+      "backend_app_embedding",
+      "backend_app_embedding_generate_embedding",
+      "backend_app_models_documentchunk",
+      "backend_app_retrieval",
+      "backend_app_retrieval_py_session",
+      "backend_app_retrieval_semantic_search",
+      "backend_scripts_generate_embeddings",
+      "backend_scripts_test_semantic_search",
+      "sentence_transformers",
+      "sys"
+    ],
+    "4": [
+      "backend_app_chunker",
+      "backend_app_chunker_create_chunks",
+      "backend_app_pdf_extractor",
+      "backend_app_pdf_extractor_extract_pdf_text",
+      "backend_app_pdf_extractor_rationale_4",
+      "backend_scripts_test_chunking",
+      "backend_scripts_test_pdf_extraction",
+      "pymupdf",
+      "tiktoken"
+    ],
+    "5": [
+      "backend_app_database_base",
+      "backend_app_models",
+      "backend_app_models_document",
+      "backend_scripts_create_tables",
+      "datetime",
+      "declarativebase",
+      "pgvector_sqlalchemy",
+      "sqlalchemy_orm"
+    ],
+    "6": [
+      "backend_app_database",
+      "backend_scripts_add_vector_column",
+      "backend_scripts_test_db",
+      "pathlib",
+      "sqlalchemy",
+      "sqlalchemy_engine"
+    ]
+  },
+  "cohesion": {
+    "0": 0.16176470588235295,
+    "1": 0.1523809523809524,
+    "2": 0.24242424242424243,
+    "3": 0.35555555555555557,
+    "4": 0.3055555555555556,
+    "5": 0.35714285714285715,
+    "6": 0.5333333333333333
+  },
+  "gods": [
+    {
+      "id": "backend_app_models_document",
+      "label": "Document",
+      "degree": 13
+    },
+    {
+      "id": "backend_app_models_documentchunk",
+      "label": "DocumentChunk",
+      "degree": 8
+    },
+    {
+      "id": "backend_app_bm25_retrieval_bm25_search",
+      "label": "bm25_search()",
+      "degree": 8
+    },
+    {
+      "id": "backend_app_retrieval_semantic_search",
+      "label": "semantic_search()",
+      "degree": 8
+    },
+    {
+      "id": "backend_app_database_base",
+      "label": "Base",
+      "degree": 7
+    },
+    {
+      "id": "backend_app_main_upload_document",
+      "label": "upload_document()",
+      "degree": 5
+    },
+    {
+      "id": "backend_app_hybrid_retrieval_hybrid_search",
+      "label": "hybrid_search()",
+      "degree": 5
+    },
+    {
+      "id": "backend_app_main_delete_document",
+      "label": "delete_document()",
+      "degree": 4
+    },
+    {
+      "id": "backend_app_main_download_document",
+      "label": "download_document()",
+      "degree": 4
+    },
+    {
+      "id": "backend_app_main_get_documents",
+      "label": "get_documents()",
+      "degree": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "bm25_search()",
+      "target": "DocumentChunk",
+      "source_files": [
+        "backend/app/bm25_retrieval.py",
+        "backend/app/models.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "bm25_search()",
+      "target": "Document",
+      "source_files": [
+        "backend/app/bm25_retrieval.py",
+        "backend/app/models.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "delete_document()",
+      "target": "Document",
+      "source_files": [
+        "backend/app/main.py",
+        "backend/app/models.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "download_document()",
+      "target": "Document",
+      "source_files": [
+        "backend/app/main.py",
+        "backend/app/models.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "get_documents()",
+      "target": "Document",
+      "source_files": [
+        "backend/app/main.py",
+        "backend/app/models.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `Document` connect `models.py` to `main.py`, `bm25_retrieval.py`, `retrieval.py`, `test_chunking.py`?",
+      "why": "High betweenness centrality (0.173) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `upload_document()` connect `main.py` to `models.py`?",
+      "why": "High betweenness centrality (0.058) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `bm25_search()` connect `bm25_retrieval.py` to `retrieval.py`, `models.py`?",
+      "why": "High betweenness centrality (0.050) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 6 inferred relationships involving `Document` (e.g. with `bm25_search()` and `delete_document()`) actually correct?",
+      "why": "`Document` has 6 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `DocumentChunk` (e.g. with `bm25_search()` and `semantic_search()`) actually correct?",
+      "why": "`DocumentChunk` has 2 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `bm25_search()` (e.g. with `Document` and `DocumentChunk`) actually correct?",
+      "why": "`bm25_search()` has 2 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `semantic_search()` (e.g. with `Document` and `DocumentChunk`) actually correct?",
+      "why": "`semantic_search()` has 2 INFERRED edges - model-reasoned connections that need verification."
+    }
+  ]
+}
