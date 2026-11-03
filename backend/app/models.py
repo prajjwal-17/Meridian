@@ -1,6 +1,8 @@
 from datetime import datetime
 from sqlalchemy import Column, Integer, ForeignKey, Text, UniqueConstraint
 
+from pgvector.sqlalchemy import Vector
+
 from sqlalchemy import DateTime, Integer, String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -36,6 +38,7 @@ class DocumentChunk(Base):
         index=True
     )
 
+    embedding = Column(Vector(384), nullable=True)
     page_number = Column(Integer, nullable=False)
     chunk_index = Column(Integer, nullable=False)
     text = Column(Text, nullable=False)
