@@ -10,9 +10,16 @@ from sqlalchemy.orm import Session
 
 from app.entity_extractor import extract_entities
 from app.models import ChunkEntityMention, Document, DocumentChunk, Entity, EntityRelationship
+from app.permissions import PermissionContext, authorized_chunk_ids
 
 
-def graph_search(db: Session, query: str, top_k: int = 5, max_hops: int = 1) -> list[dict]:
+def graph_search(
+    db: Session,
+    query: str,
+    top_k: int = 5,
+    max_hops: int = 1,
+    permission_context: PermissionContext | None = None,
+) -> list[dict]:
     """Find query entities, traverse relationships, and return related chunks."""
 
     if not query.strip():
@@ -68,8 +75,17 @@ def graph_search(db: Session, query: str, top_k: int = 5, max_hops: int = 1) -> 
     if not distances:
         return []
 
+    allowed_ids = authorized_chunk_ids(
+        db, permission_context or PermissionContext()
+    )
+    if not allowed_ids:
+        return []
+
     mentions = db.scalars(
-        select(ChunkEntityMention).where(ChunkEntityMention.entity_id.in_(distances))
+        select(ChunkEntityMention).where(
+            ChunkEntityMention.entity_id.in_(distances),
+            ChunkEntityMention.chunk_id.in_(allowed_ids),
+        )
     ).all()
     scores = {}
     for mention in mentions:

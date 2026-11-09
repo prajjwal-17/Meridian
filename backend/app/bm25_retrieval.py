@@ -6,6 +6,7 @@ from collections import Counter
 from sqlalchemy.orm import Session
 
 from app.models import Document, DocumentChunk
+from app.permissions import PermissionContext, authorized_chunk_ids
 
 
 def tokenize(text: str) -> list[str]:
@@ -17,7 +18,8 @@ def bm25_search(
     query: str,
     top_k: int = 5,
     k1: float = 1.5,
-    b: float = 0.75
+    b: float = 0.75,
+    permission_context: PermissionContext | None = None,
 ) -> list[dict]:
 
     if not query.strip():
@@ -26,12 +28,19 @@ def bm25_search(
     if top_k <= 0:
         raise ValueError("top_k must be positive")
 
+    allowed_ids = authorized_chunk_ids(
+        db, permission_context or PermissionContext()
+    )
+    if not allowed_ids:
+        return []
+
     rows = (
         db.query(DocumentChunk, Document.filename)
         .join(
             Document,
             Document.id == DocumentChunk.document_id
         )
+        .filter(DocumentChunk.id.in_(allowed_ids))
         .all()
     )
 

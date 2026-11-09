@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import Column, Integer, ForeignKey, Text, UniqueConstraint, Index
+from sqlalchemy import Column, Integer, ForeignKey, Text, UniqueConstraint, Index, JSON
 
 from pgvector.sqlalchemy import Vector
 
@@ -19,6 +19,13 @@ class Document(Base):
     file_size: Mapped[int] = mapped_column(Integer, nullable=False)
     status: Mapped[str] = mapped_column(String(50), default="uploaded")
     checksum: Mapped[str] = mapped_column(String(64), nullable=False)
+    # ACL metadata is explicit so missing/invalid values can fail closed.
+    permission_tier: Mapped[str | None] = mapped_column(
+        String(20), nullable=True, index=True
+    )
+    permission_team: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    permission_department: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    restricted_user_ids: Mapped[list[str] | None] = mapped_column(JSON, nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         server_default=func.now(),
@@ -43,6 +50,8 @@ class DocumentChunk(Base):
     chunk_index = Column(Integer, nullable=False)
     text = Column(Text, nullable=False)
     token_count = Column(Integer, nullable=False)
+    # Snapshot of the document ACL at processing time. Null is deny-by-default.
+    permission_tier = Column(String(20), nullable=True, index=True)
 
     __table_args__ = (
         UniqueConstraint(

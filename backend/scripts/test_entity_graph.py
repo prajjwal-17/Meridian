@@ -12,6 +12,7 @@ from app.database import Base
 from app.entity_extractor import extract_entities
 from app.entity_graph import index_chunk_entities
 from app.graph_retrieval import graph_search
+from app.permissions import PermissionContext
 from app.models import ChunkEntityMention, Document, DocumentChunk, Entity, EntityRelationship
 
 
@@ -26,13 +27,14 @@ class EntityGraphTests(unittest.TestCase):
         self.db = self.Session()
         document = Document(
             filename="architecture.pdf", object_key=f"{self._testMethodName}.pdf", content_type="application/pdf",
-            file_size=10, checksum="a" * 64,
+            file_size=10, checksum="a" * 64, permission_tier="public",
         )
         self.db.add(document)
         self.db.flush()
         self.chunk = DocumentChunk(
             document_id=document.id, page_number=1, chunk_index=0,
-            text="FastAPI uses SQLAlchemy with PostgreSQL and pgvector for hybrid search.", token_count=10,
+            text="FastAPI uses SQLAlchemy with PostgreSQL and pgvector for hybrid search.",
+            token_count=10, permission_tier="public",
         )
         self.db.add(self.chunk)
         self.db.flush()
@@ -85,7 +87,10 @@ class EntityGraphTests(unittest.TestCase):
     def test_graph_retrieval_returns_related_chunk(self):
         index_chunk_entities(self.db, self.chunk.id, self.chunk.text)
         self.db.commit()
-        results = graph_search(self.db, "How does PostgreSQL support hybrid search?", top_k=5)
+        results = graph_search(
+            self.db, "How does PostgreSQL support hybrid search?", top_k=5,
+            permission_context=PermissionContext(user_id="tester"),
+        )
         self.assertEqual(results[0]["chunk_id"], self.chunk.id)
         self.assertEqual(results[0]["filename"], "architecture.pdf")
         self.assertTrue(results[0]["matched_entities"])
@@ -94,13 +99,14 @@ class EntityGraphTests(unittest.TestCase):
     def test_cooccurrence_does_not_propagate_to_unrelated_chunk(self):
         second_document = Document(
             filename="unrelated.pdf", object_key="unrelated.pdf", content_type="application/pdf",
-            file_size=10, checksum="c" * 64,
+            file_size=10, checksum="c" * 64, permission_tier="public",
         )
         self.db.add(second_document)
         self.db.flush()
         unrelated_chunk = DocumentChunk(
             document_id=second_document.id, page_number=1, chunk_index=0,
             text="Python and PostgreSQL throughput engineering.", token_count=6,
+            permission_tier="public",
         )
         self.db.add(unrelated_chunk)
         self.db.flush()
@@ -109,7 +115,10 @@ class EntityGraphTests(unittest.TestCase):
         index_chunk_entities(self.db, unrelated_chunk.id, unrelated_chunk.text)
         self.db.commit()
 
-        results = graph_search(self.db, "What is a semaphore?", top_k=10)
+        results = graph_search(
+            self.db, "What is a semaphore?", top_k=10,
+            permission_context=PermissionContext(user_id="tester"),
+        )
         result_chunk_ids = {result["chunk_id"] for result in results}
         self.assertIn(self.chunk.id, result_chunk_ids)
         self.assertNotIn(unrelated_chunk.id, result_chunk_ids)
