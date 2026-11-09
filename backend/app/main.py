@@ -4,13 +4,14 @@ from uuid import uuid4
 from io import BytesIO
 from fastapi.responses import StreamingResponse
 
-from fastapi import FastAPI, UploadFile, File, Depends, HTTPException
+from fastapi import FastAPI, UploadFile, File, Form, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from app.database import Base, engine
-from app.dependencies import get_db
+from app.dependencies import get_db, get_permission_context
 from app.document_processor import DocumentProcessingError, process_document
 from app.models import Document
+from app.permissions import PermissionContext, validate_acl_metadata
 from app.storage import s3_client, BUCKET_NAME
 
 app = FastAPI(
@@ -33,8 +34,29 @@ def health_check():
 @app.post("/documents/upload")
 async def upload_document(
     file: UploadFile = File(...),
+    permission_tier: str = Form(...),
+    permission_team: str | None = Form(default=None),
+    permission_department: str | None = Form(default=None),
+    restricted_user_ids: str | None = Form(
+        default=None,
+        description="Comma-separated user IDs for restricted documents",
+    ),
     db: Session = Depends(get_db),
 ):
+    restricted_users = (
+        [item.strip() for item in restricted_user_ids.split(",") if item.strip()]
+        if restricted_user_ids
+        else None
+    )
+    try:
+        acl = validate_acl_metadata(
+            permission_tier,
+            permission_team,
+            permission_department,
+            restricted_users,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
     # Validate file extension
     if not file.filename or not file.filename.lower().endswith(".pdf"):
         raise HTTPException(
@@ -85,6 +107,7 @@ async def upload_document(
         content_type="application/pdf",
         file_size=len(file_content),
         checksum=checksum,
+        **acl,
     )
 
     try:
@@ -150,11 +173,51 @@ def get_documents(db: Session = Depends(get_db)):
                 "file_size": doc.file_size,
                 "status": doc.status,
                 "checksum": doc.checksum,
+                "permission_tier": doc.permission_tier,
+                "permission_team": doc.permission_team,
+                "permission_department": doc.permission_department,
                 "created_at": doc.created_at,
             }
             for doc in documents
         ],
     }
+
+
+@app.get("/search")
+def search_documents(
+    q: str = Query(min_length=1),
+    mode: str = Query(default="graph", pattern="^(graph|bm25|dense|hybrid)$"),
+    top_k: int = Query(default=5, ge=1, le=20),
+    db: Session = Depends(get_db),
+    permission_context: PermissionContext = Depends(get_permission_context),
+):
+    """Expose the existing retrieval modules to the minimal frontend."""
+    if mode == "graph":
+        from app.graph_retrieval import graph_search
+
+        results = graph_search(
+            db, q, top_k=top_k, permission_context=permission_context
+        )
+    elif mode == "bm25":
+        from app.bm25_retrieval import bm25_search
+
+        results = bm25_search(
+            db, q, top_k=top_k, permission_context=permission_context
+        )
+    elif mode == "dense":
+        from app.retrieval import semantic_search
+
+        results = semantic_search(
+            db, q, top_k=top_k, permission_context=permission_context
+        )
+    else:
+        from app.hybrid_retrieval import hybrid_search
+
+        results = hybrid_search(
+            db, q, top_k=top_k, permission_context=permission_context
+        )
+
+    return {"query": q, "mode": mode, "results": results}
     
 @app.get("/documents/{document_id}/download")
 def download_document(

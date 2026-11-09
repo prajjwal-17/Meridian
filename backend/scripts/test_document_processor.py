@@ -29,6 +29,7 @@ class DocumentProcessorTests(unittest.TestCase):
             content_type="application/pdf",
             file_size=100,
             checksum="b" * 64,
+            permission_tier="public",
         )
         self.db.add(self.document)
         self.db.commit()
@@ -71,6 +72,29 @@ class DocumentProcessorTests(unittest.TestCase):
         self.assertGreater(mention_count, 0)
         self.assertEqual(self.db.query(ChunkEntityMention).count(), mention_count)
         self.assertEqual(embedding.call_count, 1)
+
+    @patch("app.document_processor.download_file_bytes", return_value=b"%PDF-test")
+    @patch("app.document_processor.extract_pdf_text", return_value=[
+        {"page_number": 1, "text": "Restricted semaphore guidance."},
+    ])
+    @patch("app.document_processor.generate_embedding", return_value=[0.0] * 384)
+    def test_chunks_inherit_document_acl_on_retry(self, _embedding, _extract, _download):
+        self.document.permission_tier = "restricted"
+        self.document.restricted_user_ids = ["alice"]
+        self.db.commit()
+
+        process_document(self.db, self.document.id)
+        chunk = self.db.query(DocumentChunk).one()
+        self.assertEqual(chunk.permission_tier, "restricted")
+
+        # A stale chunk snapshot is repaired from the document authority.
+        chunk.permission_tier = "public"
+        self.db.commit()
+        process_document(self.db, self.document.id)
+        self.db.refresh(self.document)
+        self.db.refresh(chunk)
+        self.assertEqual(self.document.permission_tier, "restricted")
+        self.assertEqual(chunk.permission_tier, "restricted")
 
 
 if __name__ == "__main__":

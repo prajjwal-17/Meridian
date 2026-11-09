@@ -74,10 +74,15 @@ def process_document(db: Session, document_id: int) -> ProcessingResult:
                     chunk_index=chunk_data["chunk_index"],
                     text=chunk_data["text"],
                     token_count=chunk_data["token_count"],
+                    permission_tier=document.permission_tier,
                 )
                 db.add(chunk)
                 db.flush()
                 chunks_created += 1
+            else:
+                # The document is the ACL authority. Reprocessing repairs a
+                # stale snapshot but never changes the document permission.
+                chunk.permission_tier = document.permission_tier
 
             if chunk.embedding is None:
                 chunk.embedding = generate_embedding(chunk.text)

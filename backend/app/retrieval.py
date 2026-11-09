@@ -2,13 +2,21 @@
 from sqlalchemy.orm import Session
 
 from app.models import Document, DocumentChunk
-from app.embedding import generate_embedding
+from app.permissions import PermissionContext, authorized_chunk_ids
+
+
+def generate_embedding(text: str) -> list[float]:
+    """Load the embedding model only when dense search is requested."""
+    from app.embedding import generate_embedding as _generate_embedding
+
+    return _generate_embedding(text)
 
 
 def semantic_search(
     db: Session,
     query: str,
-    top_k: int = 5
+    top_k: int = 5,
+    permission_context: PermissionContext | None = None,
 ) -> list[dict]:
 
     if not query.strip():
@@ -19,6 +27,11 @@ def semantic_search(
 
     # Convert user query into an embedding
     query_embedding = generate_embedding(query)
+    allowed_ids = authorized_chunk_ids(
+        db, permission_context or PermissionContext()
+    )
+    if not allowed_ids:
+        return []
 
     # Calculate cosine distance and retrieve closest chunks
     results = (
@@ -34,6 +47,7 @@ def semantic_search(
             Document.id == DocumentChunk.document_id
         )
         .filter(DocumentChunk.embedding.isnot(None))
+        .filter(DocumentChunk.id.in_(allowed_ids))
         .order_by("distance")
         .limit(top_k)
         .all()

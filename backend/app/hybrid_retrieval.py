@@ -2,7 +2,14 @@
 from sqlalchemy.orm import Session
 
 from app.bm25_retrieval import bm25_search
-from app.retrieval import semantic_search
+from app.permissions import PermissionContext
+
+
+def semantic_search(*args, **kwargs):
+    """Keep dense model loading lazy while preserving the retrieval interface."""
+    from app.retrieval import semantic_search as _semantic_search
+
+    return _semantic_search(*args, **kwargs)
 
 
 def hybrid_search(
@@ -10,7 +17,8 @@ def hybrid_search(
     query: str,
     top_k: int = 5,
     candidate_k: int = 20,
-    rrf_k: int = 60
+    rrf_k: int = 60,
+    permission_context: PermissionContext | None = None,
 ) -> list[dict]:
 
     if not query.strip():
@@ -23,13 +31,15 @@ def hybrid_search(
     bm25_results = bm25_search(
         db=db,
         query=query,
-        top_k=candidate_k
+        top_k=candidate_k,
+        permission_context=permission_context,
     )
 
     dense_results = semantic_search(
         db=db,
         query=query,
-        top_k=candidate_k
+        top_k=candidate_k,
+        permission_context=permission_context,
     )
 
     # Store combined rankings
