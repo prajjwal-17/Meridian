@@ -35,7 +35,12 @@ def bm25_search(
         return []
 
     rows = (
-        db.query(DocumentChunk, Document.filename)
+        db.query(
+            DocumentChunk,
+            Document.filename,
+            Document.source_name,
+            Document.source_document_id,
+        )
         .join(
             Document,
             Document.id == DocumentChunk.document_id
@@ -54,7 +59,7 @@ def bm25_search(
 
     corpus = [
         tokenize(chunk.text)
-        for chunk, filename in rows
+        for chunk, filename, source_name, source_document_id in rows
     ]
 
     document_count = len(corpus)
@@ -116,11 +121,14 @@ def bm25_search(
             )
 
         if score > 0:
-            chunk, filename = rows[index]
+            chunk, filename, source_name, source_document_id = rows[index]
 
             results.append({
+                "chunk_id": chunk.id,
                 "document_id": chunk.document_id,
                 "filename": filename,
+                "source_name": source_name,
+                "source_document_id": source_document_id,
                 "page_number": chunk.page_number,
                 "chunk_index": chunk.chunk_index,
                 "text": chunk.text,

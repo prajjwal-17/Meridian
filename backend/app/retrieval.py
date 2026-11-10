@@ -38,6 +38,8 @@ def semantic_search(
         db.query(
             DocumentChunk,
             Document.filename,
+            Document.source_name,
+            Document.source_document_id,
             DocumentChunk.embedding.cosine_distance(
                 query_embedding
             ).label("distance")
@@ -55,10 +57,13 @@ def semantic_search(
 
     search_results = []
 
-    for chunk, filename, distance in results:
+    for chunk, filename, source_name, source_document_id, distance in results:
         search_results.append({
+            "chunk_id": chunk.id,
             "document_id": chunk.document_id,
             "filename": filename,
+            "source_name": source_name,
+            "source_document_id": source_document_id,
             "page_number": chunk.page_number,
             "chunk_index": chunk.chunk_index,
             "text": chunk.text,

@@ -94,12 +94,17 @@ def graph_search(
         scores[mention.chunk_id] = max(scores.get(mention.chunk_id, 0), direct_score)
 
     chunks = db.scalars(select(DocumentChunk).where(DocumentChunk.id.in_(scores))).all()
-    documents = {doc.id: doc.filename for doc in db.scalars(select(Document)).all()}
+    documents = {
+        doc.id: doc
+        for doc in db.scalars(select(Document)).all()
+    }
     results = [
         {
             "chunk_id": chunk.id,
             "document_id": chunk.document_id,
-            "filename": documents.get(chunk.document_id),
+            "filename": documents[chunk.document_id].filename,
+            "source_name": documents[chunk.document_id].source_name,
+            "source_document_id": documents[chunk.document_id].source_document_id,
             "page_number": chunk.page_number,
             "chunk_index": chunk.chunk_index,
             "text": chunk.text,

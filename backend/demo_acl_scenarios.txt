@@ -1,0 +1,238 @@
+Meridian ACL Frontend Demonstration Scenarios
+==============================================
+
+Use these scenarios in the Meridian frontend while switching between BM25,
+Dense, Hybrid, and Entity Graph retrieval.
+
+Expected behavior:
+- Allowed documents may appear in retrieval results and citations.
+- Forbidden documents must never appear in retrieval results or citations.
+- A user may receive public documents and documents allowed by their department,
+  team, or explicit user authorization.
+- Retrieval relevance may vary by mode, but ACL restrictions must not vary.
+
+
+1. HR DEPARTMENT ACCESS - AISHA KHAN
+-------------------------------------
+User: Aisha Khan
+Email: aisha.khan@meridian.example
+Department: Human Resources
+Team: People Operations
+
+Question:
+What does the employee leave and attendance policy say?
+
+Expected allowed sources:
+- HR-001 Employee Leave and Attendance Policy
+- HR-002 Employee Handbook (public)
+- HR-004 Performance Evaluation Framework (People Operations team)
+
+Expected forbidden sources:
+- HR-003 Recruitment and Onboarding SOP (Talent Acquisition team)
+- ENG-001, ENG-002, ENG-003, ENG-004
+- FIN-001, FIN-002, FIN-003, FIN-004
+- IT-001, IT-002, IT-003, IT-004
+- OPS-001, OPS-002, OPS-003
+
+Expected result:
+HR-001 should be the primary relevant source. HR-002 or HR-004 may also
+appear, depending on the retrieval mode.
+
+
+2. ENGINEERING TEAM ACCESS - PRIYA NAIR
+---------------------------------------
+User: Priya Nair
+Email: priya.nair@meridian.example
+Department: Engineering
+Teams: Backend Platform, Data Engineering
+
+Question:
+How should backend services communicate and integrate?
+
+Expected allowed sources:
+- ENG-001 Backend Platform Architecture and API Design
+- ENG-002 Software Engineering Development and Deployment Guidelines
+- ENG-003 Microservices Communication and Integration Standards
+- HR-002 Employee Handbook (public)
+
+Expected forbidden sources:
+- ENG-004 Production Deployment and Incident Response Procedures
+  (DevOps/Infrastructure team)
+- FIN-001, FIN-002, FIN-003, FIN-004
+- IT-001, IT-002, IT-003, IT-004
+- OPS-001, OPS-002, OPS-003
+- HR-001, HR-003, HR-004
+
+Expected result:
+ENG-003 should be the primary relevant source. ENG-004 must not appear
+because Priya is not a member of the Infrastructure/DevOps team.
+
+
+3. MULTI-DEPARTMENT ACCESS - GRACE WILSON
+-----------------------------------------
+User: Grace Wilson
+Email: grace.wilson@meridian.example
+Departments: Finance, Operations
+Teams: Accounts Payable, Business Operations
+
+Question:
+What are the expense reimbursement and vendor management requirements?
+
+Expected allowed sources:
+- FIN-002 Employee Expense Reimbursement Policy
+- FIN-003 Procurement and Purchase Approval Policy
+- OPS-002 Vendor Management Framework
+- OPS-001 Business Continuity Management Plan, if mapped to her team
+- OPS-003 Internal Service-Level Agreement, if mapped to her team
+- HR-002 Employee Handbook (public)
+
+Expected forbidden sources:
+- FIN-004 Annual Department Budget Allocation Report
+  (restricted to explicitly authorized users)
+- ENG-001, ENG-002, ENG-003, ENG-004
+- IT-001, IT-002, IT-003, IT-004
+- HR-001, HR-003, HR-004
+
+Expected result:
+FIN-002 and OPS-002 should be retrievable. FIN-004 must never appear.
+
+
+4. RESTRICTED DOCUMENT ACCESS - SOFIA CHEN
+------------------------------------------
+User: Sofia Chen
+Email: sofia.chen@meridian.example
+Department: Engineering
+Team: Data Engineering
+
+Question:
+Summarize the annual department budget allocation report.
+
+Expected allowed sources:
+- FIN-004 Annual Department Budget Allocation Report
+  (explicitly authorized user)
+- HR-002 Employee Handbook (public)
+
+Expected forbidden sources:
+- FIN-001, FIN-002, FIN-003
+- ENG-001, ENG-002, ENG-003, ENG-004
+- IT-001, IT-002, IT-003, IT-004
+- OPS-001, OPS-002, OPS-003
+- HR-001, HR-003, HR-004
+
+Expected result:
+FIN-004 should appear for Sofia even though she is not in Finance.
+
+
+5. RESTRICTED DOCUMENT DENIAL - AISHA KHAN
+------------------------------------------
+User: Aisha Khan
+Email: aisha.khan@meridian.example
+
+Question:
+What is in the annual department budget allocation report?
+
+Expected allowed sources:
+- HR-002 Employee Handbook (public), if returned by retrieval
+
+Expected forbidden sources:
+- FIN-004 Annual Department Budget Allocation Report
+
+Expected result:
+FIN-004 must not appear in search results, citations, or generated answers.
+
+
+6. TEAM-SPECIFIC DENIAL - OMAR HADDAD
+-------------------------------------
+User: Omar Haddad
+Email: omar.haddad@meridian.example
+Department: Finance
+Team: Financial Planning
+
+Question:
+What is the employee expense reimbursement process?
+
+Expected allowed sources:
+- HR-002 Employee Handbook (public)
+
+Expected forbidden sources:
+- FIN-002 Employee Expense Reimbursement Policy
+- FIN-003 Procurement and Purchase Approval Policy
+- FIN-004 Annual Department Budget Allocation Report
+
+Expected result:
+Omar must not receive FIN-002 or FIN-003 because he is not a member of
+the Accounts Payable team. The answer should abstain if no relevant
+authorized evidence exists.
+
+
+7. IT DEPARTMENT ACCESS - NOAH PATEL
+------------------------------------
+User: Noah Patel
+Email: noah.patel@meridian.example
+Department: IT and Security
+Teams: Security Operations, Infrastructure
+
+Question:
+What does the enterprise access control policy require?
+
+Expected allowed sources:
+- IT-001 Enterprise Access Control Policy
+- IT-002 Password and Authentication Standards
+- IT-003 Data Retention and Disposal Policy
+- IT-004 Backup and Disaster Recovery Procedures
+- HR-002 Employee Handbook (public)
+
+Expected forbidden sources:
+- ENG-001, ENG-002, ENG-003
+- FIN-001, FIN-002, FIN-003, FIN-004
+- OPS-001, OPS-002, OPS-003
+- HR-001, HR-003, HR-004
+
+Expected result:
+IT-001 should be the primary relevant source.
+
+
+8. UNAUTHORIZED VENDOR ACCESS - LUCAS MARTIN
+---------------------------------------------
+User: Lucas Martin
+Email: lucas.martin@meridian.example
+Department: Operations
+Team: Customer Success
+
+Question:
+What does the vendor management framework require?
+
+Expected allowed sources:
+- HR-002 Employee Handbook (public)
+- OPS-003 Internal Service-Level Agreement, if relevant to the query
+
+Expected forbidden sources:
+- OPS-002 Vendor Management Framework
+- OPS-001 Business Continuity Management Plan
+
+Expected result:
+OPS-002 must not appear because Lucas is not in Vendor Management or
+Business Operations.
+
+
+FRONTEND TEST CHECKLIST
+=======================
+
+For each scenario:
+1. Log in as the named user.
+2. Run the question using BM25.
+3. Repeat using Dense.
+4. Repeat using Hybrid.
+5. Optionally repeat using Entity Graph.
+6. Confirm allowed document IDs can appear.
+7. Confirm forbidden document IDs never appear.
+8. For Ask Meridian, inspect both retrieved sources and citations.
+9. Confirm unauthorized document text is not shown in the answer context.
+10. Record any relevance differences between retrieval modes separately from
+    ACL failures.
+
+Important:
+- Do not treat a missing expected source as an ACL failure; it may be a
+  retrieval relevance issue.
+- Treat any forbidden source appearing in results or citations as an ACL failure.
+- Do not use the test_users.txt passwords in screenshots or shared reports.

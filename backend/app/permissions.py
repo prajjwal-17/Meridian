@@ -1,8 +1,4 @@
-"""Centralized, fail-closed document ACL checks.
-
-Authentication is intentionally outside this module. PermissionContext is an
-explicit request input for the current development stage, not production auth.
-"""
+"""Centralized, fail-closed document ACL checks."""
 
 from __future__ import annotations
 
@@ -19,6 +15,9 @@ class PermissionContext:
     user_id: str | None = None
     team: str | None = None
     department: str | None = None
+    roles: frozenset[str] = frozenset()
+    teams: frozenset[str] = frozenset()
+    departments: frozenset[str] = frozenset()
 
 
 def validate_acl_metadata(
@@ -76,15 +75,19 @@ def can_access_document(document: Document, context: PermissionContext) -> bool:
     if tier == "public":
         return True
     if tier == "team":
-        required_team = _valid_text(getattr(document, "permission_team", None))
-        return bool(required_team and context.team and context.team == required_team)
-    if tier == "department":
-        required_department = _valid_text(getattr(document, "permission_department", None))
-        return bool(
-            required_department
-            and context.department
-            and context.department == required_department
+        allowed_teams = _acl_values(
+            getattr(document, "permission_teams", None),
+            getattr(document, "permission_team", None),
         )
+        context_teams = _context_values(context.teams, context.team)
+        return bool(allowed_teams.intersection(context_teams))
+    if tier == "department":
+        allowed_departments = _acl_values(
+            getattr(document, "permission_departments", None),
+            getattr(document, "permission_department", None),
+        )
+        context_departments = _context_values(context.departments, context.department)
+        return bool(allowed_departments.intersection(context_departments))
     if tier == "restricted":
         allowed_users = getattr(document, "restricted_user_ids", None)
         if not isinstance(allowed_users, list) or not all(
@@ -96,6 +99,32 @@ def can_access_document(document: Document, context: PermissionContext) -> bool:
             and context.user_id in {item.strip() for item in allowed_users}
         )
     return False
+
+
+def _context_values(values: frozenset[str] | set[str], fallback: str | None) -> set[str]:
+    result = {_normalise_acl_value(item) for item in values if _valid_text(item)}
+    if _valid_text(fallback):
+        result.add(_normalise_acl_value(fallback))
+    return result
+
+
+def _acl_values(values: Any, fallback: str | None) -> set[str]:
+    if isinstance(values, list):
+        result = {
+            _normalise_acl_value(item)
+            for item in values
+            if isinstance(item, str) and item.strip()
+        }
+        if result:
+            return result
+    if _valid_text(fallback):
+        return {_normalise_acl_value(fallback)}
+    return set()
+
+
+def _normalise_acl_value(value: str) -> str:
+    # ACL matching is intentionally exact after whitespace normalization.
+    return value.strip()
 
 
 def can_access_chunk(

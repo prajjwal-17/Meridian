@@ -17,6 +17,10 @@ sample-documents/*.pdf
 storage/
 data/
 
+# Local demo credentials
+test_users.txt
+test_users.json
+
 # IDE
 .vscode/
 .idea/

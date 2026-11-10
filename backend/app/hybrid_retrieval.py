@@ -2,7 +2,8 @@
 from sqlalchemy.orm import Session
 
 from app.bm25_retrieval import bm25_search
-from app.permissions import PermissionContext
+from app.permissions import PermissionContext, authorized_chunk_ids
+from app.reranker import rerank_candidates
 
 
 def semantic_search(*args, **kwargs):
@@ -19,6 +20,7 @@ def hybrid_search(
     candidate_k: int = 20,
     rrf_k: int = 60,
     permission_context: PermissionContext | None = None,
+    rerank: bool = False,
 ) -> list[dict]:
 
     if not query.strip():
@@ -66,8 +68,11 @@ def hybrid_search(
 
             if key not in fused_results:
                 fused_results[key] = {
+                    "chunk_id": result.get("chunk_id"),
                     "document_id": result["document_id"],
                     "filename": result["filename"],
+                    "source_name": result.get("source_name"),
+                    "source_document_id": result.get("source_document_id"),
                     "page_number": result["page_number"],
                     "chunk_index": result["chunk_index"],
                     "text": result["text"],
@@ -95,4 +100,30 @@ def hybrid_search(
         reverse=True
     )
 
-    return ranked_results[:top_k]
+    if not rerank:
+        return ranked_results[:top_k]
+
+    # Defense in depth: resolve ACLs immediately before candidate text reaches
+    # the cross-encoder.
+    candidate_ids = [
+        result["chunk_id"]
+        for result in ranked_results
+        if isinstance(result.get("chunk_id"), int)
+    ]
+    allowed_ids = authorized_chunk_ids(
+        db,
+        permission_context or PermissionContext(),
+        candidate_ids,
+    )
+    safe_candidates = [
+        result
+        for result in ranked_results[:candidate_k]
+        if result.get("chunk_id") in allowed_ids
+    ]
+    return rerank_candidates(
+        query=query,
+        candidates=safe_candidates,
+        top_k=top_k,
+        permission_context=permission_context,
+        authorized_ids=allowed_ids,
+    )
