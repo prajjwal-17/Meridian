@@ -30,7 +30,10 @@ class OllamaRequestError(AnswerGenerationError):
     """Raised when the local Ollama service or model cannot answer."""
 
 
-_CITATION_PATTERN = re.compile(r"\[(C\d+)\]")
+# Accept the model's common citation forms, including [C4, C5] and
+# parenthesized citations, while validating every extracted ID against the
+# passages actually supplied to Ollama.
+_CITATION_PATTERN = re.compile(r"(?<![A-Za-z0-9])C\d+(?![A-Za-z0-9])")
 _INSUFFICIENT_PATTERN = re.compile(
     r"\b(insufficient|not mentioned|does not provide|cannot answer|abstain|no relevant)\b",
     re.IGNORECASE,
@@ -111,6 +114,22 @@ def build_grounding_prompt(question: str, passages: list[dict[str, Any]]) -> str
         "sources conflict, explain the conflict and cite the conflicting "
         "passages."
     )
+
+
+def _validated_citations(
+    answer: str,
+    passages: list[dict[str, Any]],
+) -> tuple[list[str], list[dict[str, Any]], bool]:
+    """Extract only citation IDs that exist in the supplied context."""
+
+    cited_ids = list(dict.fromkeys(_CITATION_PATTERN.findall(answer)))
+    passage_by_id = {item["citation_id"]: item for item in passages}
+    citations = [
+        passage_by_id[citation_id]
+        for citation_id in cited_ids
+        if citation_id in passage_by_id
+    ]
+    return cited_ids, citations, bool(_INSUFFICIENT_PATTERN.search(answer))
 
 
 def _query_anchors(question: str) -> list[str]:
@@ -211,6 +230,7 @@ def generate_with_ollama(
             "system": system_prompt,
             "prompt": prompt,
             "stream": False,
+            "options": {"temperature": 0},
         }
     ).encode("utf-8")
     request = Request(
@@ -319,18 +339,29 @@ def answer_question(
             },
         }
 
-    raw_answer = generate_with_ollama(
-        build_grounding_prompt(question, passages),
-        request_fn=request_fn,
-    )
-    cited_ids = list(dict.fromkeys(_CITATION_PATTERN.findall(raw_answer)))
-    passage_by_id = {item["citation_id"]: item for item in passages}
-    citations = [
-        passage_by_id[citation_id]
-        for citation_id in cited_ids
-        if citation_id in passage_by_id
-    ]
-    model_abstained = bool(_INSUFFICIENT_PATTERN.search(raw_answer))
+    grounding_prompt = build_grounding_prompt(question, passages)
+    raw_answer = generate_with_ollama(grounding_prompt, request_fn=request_fn)
+    _, citations, model_abstained = _validated_citations(raw_answer, passages)
+
+    # Ollama can occasionally abstain or omit citation brackets even when the
+    # evidence gate selected passages. Retry once with a stricter output
+    # instruction; never retry when no evidence was selected.
+    if not citations or model_abstained:
+        retry_prompt = (
+            grounding_prompt
+            + "\n\nRetry requirement: answer in 3-6 concise sentences. "
+            "Use at least one directly relevant passage and cite it exactly "
+            "as [C1], [C2], etc. Do not say evidence is insufficient unless "
+            "none of the supplied passages supports the question."
+        )
+        retry_answer = generate_with_ollama(retry_prompt, request_fn=request_fn)
+        _, retry_citations, retry_abstained = _validated_citations(
+            retry_answer, passages
+        )
+        if retry_citations and not retry_abstained:
+            raw_answer = retry_answer
+            citations = retry_citations
+            model_abstained = False
     if model_abstained:
         raw_answer = "Insufficient relevant evidence was found to answer this question."
         citations = []

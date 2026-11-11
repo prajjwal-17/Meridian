@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-11-12T01:26:37+0530",
+  "case_count": 8,
+  "mode_count": 5,
+  "row_count": 40,
+  "successful_rows": 40,
+  "error_rows": 0,
+  "total_runtime_seconds": 11.445,
+  "modes": [
+    "bm25",
+    "dense",
+    "hybrid",
+    "hybrid_rerank",
+    "graph"
+  ],
+  "top_k": 10,
+  "python": "3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)]",
+  "ollama_model": "not used by retrieval evaluator",
+  "by_mode": {
+    "bm25": {
+      "rows": 8,
+      "mean_latency_ms": 11.84,
+      "hit_at_10": 1.0,
+      "mrr_at_10": 0.525,
+      "ndcg_at_10": 0.5484,
+      "acl_pass_rate": 1.0,
+      "forbidden_leakage_rows": 0
+    },
+    "dense": {
+      "rows": 8,
+      "mean_latency_ms": 1066.94,
+      "hit_at_10": 1.0,
+      "mrr_at_10": 0.5625,
+      "ndcg_at_10": 0.5789,
+      "acl_pass_rate": 1.0,
+      "forbidden_leakage_rows": 0
+    },
+    "hybrid": {
+      "rows": 8,
+      "mean_latency_ms": 19.84,
+      "hit_at_10": 1.0,
+      "mrr_at_10": 0.5625,
+      "ndcg_at_10": 0.5789,
+      "acl_pass_rate": 1.0,
+      "forbidden_leakage_rows": 0
+    },
+    "hybrid_rerank": {
+      "rows": 8,
+      "mean_latency_ms": 281.74,
+      "hit_at_10": 1.0,
+      "mrr_at_10": 0.625,
+      "ndcg_at_10": 0.625,
+      "acl_pass_rate": 1.0,
+      "forbidden_leakage_rows": 0
+    },
+    "graph": {
+      "rows": 8,
+      "mean_latency_ms": 50.04,
+      "hit_at_10": 1.0,
+      "mrr_at_10": 0.4792,
+      "ndcg_at_10": 0.4832,
+      "acl_pass_rate": 1.0,
+      "forbidden_leakage_rows": 0
+    }
+  },
+  "plots_generated": true
+}

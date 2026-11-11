@@ -1,0 +1,2 @@
+# Optional dependencies for meridian_evaluation.py figures in Jupyter/VS Code.
+matplotlib>=3.8,<4

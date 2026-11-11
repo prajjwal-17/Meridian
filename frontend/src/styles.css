@@ -173,6 +173,20 @@ nav { display: grid; gap: 4px; }
 .entity-tags span { padding: 4px 7px; border-radius: 99px; background: color-mix(in srgb, var(--action) 10%, transparent); color: var(--action); font-size: 10px; }
 
 .documents-workspace, .graph-workspace { width: min(1080px, calc(100% - 48px)); height: 100%; overflow-y: auto; margin: 0 auto; padding: 54px 0 64px; scrollbar-width: thin; }
+.graph-search { display: flex; gap: 9px; margin-bottom: 16px; }
+.graph-search input { flex: 1; min-width: 0; height: 46px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: var(--r-sm); outline: 0; background: var(--surface); color: var(--ink); }
+.graph-search input:focus { border-color: var(--action); }
+.graph-search .primary-button { min-height: 46px; }
+.graph-error { width: 100%; margin-bottom: 16px; }
+.graph-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+.graph-summary > div { display: grid; gap: 7px; padding: 15px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
+.graph-summary strong { font: 800 28px Manrope; }
+.graph-entities, .graph-results { margin-top: 16px; }
+.entity-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+.graph-entity { display: inline-flex; align-items: center; gap: 8px; padding: 9px 11px; border: 1px solid color-mix(in srgb, var(--action) 24%, var(--line)); border-radius: 99px; background: color-mix(in srgb, var(--action) 7%, transparent); color: var(--ink); font-size: 12px; }
+.graph-entity small { color: var(--action); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; }
+.relationship-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; padding-top: 15px; border-top: 1px solid var(--line); }
+.relationship-list span { padding: 6px 8px; border-radius: 7px; background: var(--surface-2); color: var(--muted); font-size: 10px; }
 .workspace-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
 .workspace-heading h1 { margin-top: 7px; font-size: clamp(30px, 4vw, 48px); }
 .workspace-heading p { max-width: 520px; margin-top: 11px; color: var(--muted); font-size: 15px; line-height: 1.6; }
@@ -308,6 +322,7 @@ nav { display: grid; gap: 4px; }
   .composer { padding-left: 13px; }.composer textarea { min-height: 58px; font-size: 15px; }.mode-switch { max-width: calc(100vw - 145px); }
   .message { gap: 8px; }.user-bubble { max-width: 88%; }.answer-text { font-size: 14px; }.result-card p { font-size: 13px; }
   .documents-workspace, .graph-workspace { padding-top: 32px; }.workspace-heading { align-items: flex-start; flex-direction: column; margin-bottom: 25px; }.workspace-heading h1 { font-size: 36px; }.field-grid { grid-template-columns: 1fr; }.panel { padding: 18px; }.document-row { align-items: flex-start; }.badge { margin-left: auto; }
+  .graph-search { flex-direction: column; }.graph-search .primary-button { justify-content: center; }.graph-summary { gap: 7px; }.graph-summary > div { padding: 11px; }.graph-summary strong { font-size: 23px; }
   .auth-screen { padding: 16px; place-items: start center; }.auth-layout { max-height: none; grid-template-columns: 1fr; max-width: 520px; }.access-card { order: 2; }.auth-layout .auth-card { max-height: none; }.auth-card { padding: 24px; }.auth-brand { margin-bottom: 42px; }.auth-card h1 { font-size: 30px; }.access-orbit { height: 90px; }.admin-grid { grid-template-columns: 1fr; }.admin-row { grid-template-columns: 1fr auto; gap: 7px; }.admin-row > span:first-of-type { grid-column: 1; }.admin-row .compact { grid-column: 2; grid-row: 1 / span 2; }
   .admin-inline-form { flex-direction: column; }.admin-inline-form .primary-button { justify-content: center; }.admin-actions { justify-content: flex-start; }
 }
