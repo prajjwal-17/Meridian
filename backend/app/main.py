@@ -1,13 +1,15 @@
 import hashlib
+import hmac
 import json
 import os
+import threading
+from contextlib import asynccontextmanager
 from io import BytesIO
 from pathlib import Path
 from uuid import uuid4
-from io import BytesIO
-from fastapi.responses import Response, StreamingResponse
 
 from fastapi import Cookie, FastAPI, UploadFile, File, Form, Depends, HTTPException, Query, Request
+from fastapi.responses import JSONResponse, Response, StreamingResponse
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
@@ -21,8 +23,22 @@ from app.document_processor import DocumentProcessingError, process_document
 from app.models import Document, User
 from app.permissions import PermissionContext, can_access_document, validate_acl_metadata
 from app.storage import s3_client, BUCKET_NAME
-from app.answer_generation import AnswerGenerationError, answer_question
+from app.answer_generation import (
+    AnswerGenerationError,
+    NO_EVIDENCE_ANSWER,
+    SYSTEM_PROMPT,
+    answer_question,
+    build_grounding_prompt,
+    finalize_answer,
+    generate_with_ollama,
+    retrieval_payload,
+    retrieve_evidence,
+    stream_with_ollama,
+    _validated_citations,
+)
 from app.auth import (
+    CSRF_COOKIE,
+    SESSION_COOKIE,
     clear_auth_cookies,
     clear_login_failures,
     create_session,
@@ -38,15 +54,72 @@ from app.auth import (
     user_roles,
     utc_now,
     verify_password,
+    validate_origin,
 )
 from app.admin_api import router as admin_router
+
+
+def _warm_models() -> None:
+    """Load the embedding model, cross-encoder and LLM before the first query.
+
+    Runs in a background thread so the API starts serving immediately; the
+    first real question no longer pays tens of seconds of model loading.
+    """
+    if os.getenv("MERIDIAN_SKIP_WARMUP", "").strip().lower() in {"1", "true", "yes"}:
+        return
+    try:
+        from app.embedding import embed_query
+
+        embed_query("warm up")
+        from app.reranker import load_cross_encoder
+
+        load_cross_encoder().predict([("warm up", "warm up")])
+    except Exception:
+        pass
+    from app.answer_generation import warm_up_ollama
+
+    warm_up_ollama()
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    threading.Thread(target=_warm_models, name="meridian-warmup", daemon=True).start()
+    yield
+
 
 app = FastAPI(
     title="Meridian API",
     description="Enterprise RAG Platform",
-    version="0.1.0",
+    version="0.2.0",
+    lifespan=lifespan,
 )
 app.include_router(admin_router)
+
+_UNSAFE_METHODS = {"POST", "PUT", "PATCH", "DELETE"}
+
+
+@app.middleware("http")
+async def csrf_guard(request: Request, call_next):
+    """Require a trusted Origin and matching CSRF token on every state change.
+
+    Applies to all mutating requests that carry a session cookie, so new
+    routes are protected by default. Login has no session yet and validates
+    its origin itself.
+    """
+    if (
+        request.method in _UNSAFE_METHODS
+        and request.url.path != "/auth/login"
+        and request.cookies.get(SESSION_COOKIE)
+    ):
+        try:
+            validate_origin(request)
+        except HTTPException as exc:
+            return JSONResponse({"detail": exc.detail}, status_code=exc.status_code)
+        cookie = request.cookies.get(CSRF_COOKIE)
+        header = request.headers.get("X-CSRF-Token")
+        if not cookie or not header or not hmac.compare_digest(cookie, header):
+            return JSONResponse({"detail": "CSRF validation failed."}, status_code=403)
+    return await call_next(request)
 
 
 class AskRequest(BaseModel):
@@ -84,8 +157,6 @@ def login(
     db: Session = Depends(get_db),
 ):
     identifier = request.identifier.strip()
-    from app.auth import validate_origin
-
     validate_origin(http_request)
     if not login_allowed(http_request, identifier):
         raise HTTPException(status_code=429, detail="Too many login attempts. Try again later.")
@@ -203,8 +274,10 @@ async def upload_document(
         description="Comma-separated user IDs for restricted documents",
     ),
     db: Session = Depends(get_db),
-    _user: User = Depends(get_current_user),
+    _admin: User = Depends(require_admin),
 ):
+    """Upload and process a PDF. Administrators only: the ACL chosen here
+    decides who can read the document, so members cannot publish content."""
     restricted_users = (
         [item.strip() for item in restricted_user_ids.split(",") if item.strip()]
         if restricted_user_ids
@@ -315,7 +388,36 @@ async def upload_document(
         "checksum": document.checksum,
         "status": document.status,
     }
-    
+
+
+@app.get("/documents/accessible")
+def get_accessible_documents(
+    db: Session = Depends(get_db),
+    permission_context: PermissionContext = Depends(get_authenticated_permission_context),
+):
+    """Documents the signed-in user may read, without storage internals."""
+    documents = db.query(Document).order_by(Document.filename).all()
+    visible = [doc for doc in documents if can_access_document(doc, permission_context)]
+    return {
+        "total": len(visible),
+        "documents": [
+            {
+                "id": doc.id,
+                "filename": doc.filename,
+                "status": doc.status,
+                "permission_tier": doc.permission_tier,
+                "permission_teams": doc.permission_teams,
+                "permission_departments": doc.permission_departments,
+                "permission_team": doc.permission_team,
+                "permission_department": doc.permission_department,
+                "source_document_id": doc.source_document_id,
+                "created_at": doc.created_at,
+            }
+            for doc in visible
+        ],
+    }
+
+
 @app.get("/documents")
 def get_documents(
     db: Session = Depends(get_db),
@@ -416,7 +518,88 @@ def ask_question(
         )
     except AnswerGenerationError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
-    
+
+
+def _passage_preview(passage: dict) -> dict:
+    return {
+        "citation_id": passage["citation_id"],
+        "document_id": passage.get("document_id"),
+        "chunk_id": passage.get("chunk_id"),
+        "filename": passage.get("filename"),
+        "page_number": passage.get("page_number"),
+        "source_document_id": passage.get("source_document_id"),
+        "text": passage.get("text", ""),
+    }
+
+
+@app.post("/ask/stream")
+def ask_question_stream(
+    request: AskRequest,
+    db: Session = Depends(get_db),
+    permission_context: PermissionContext = Depends(get_authenticated_permission_context),
+):
+    """Grounded answer streamed as NDJSON events.
+
+    Events: ``retrieval`` (selected sources), ``token`` (answer text as it is
+    generated), then ``final`` (validated answer and citations) or ``error``.
+    All database work happens before streaming starts; the stream itself only
+    talks to the local model.
+    """
+    try:
+        authorized_results, _evidence, passages = retrieve_evidence(
+            db,
+            request.question,
+            permission_context,
+            top_k=request.top_k,
+            rerank=request.rerank,
+            mode=request.mode,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    retrieval = retrieval_payload(request.mode, request.rerank, authorized_results, passages)
+
+    def events():
+        def line(payload: dict) -> bytes:
+            return (json.dumps(payload, default=str) + "\n").encode("utf-8")
+
+        yield line({
+            "type": "retrieval",
+            "retrieval": retrieval,
+            "passages": [_passage_preview(p) for p in passages],
+        })
+        if not passages:
+            yield line({"type": "final", "answer": NO_EVIDENCE_ANSWER, "citations": [], "sufficient_evidence": False})
+            return
+        prompt = build_grounding_prompt(request.question, passages)
+        try:
+            parts = []
+            for fragment in stream_with_ollama(prompt):
+                parts.append(fragment)
+                yield line({"type": "token", "text": fragment})
+            raw_answer = "".join(parts)
+            _, citations, abstained = _validated_citations(raw_answer, passages)
+            if not citations and not abstained:
+                raw_answer = generate_with_ollama(
+                    prompt + "\n\nYour previous answer had no citations. Answer again and put "
+                    "[C1], [C2], etc. after each supported sentence."
+                )
+            answer, citations, sufficient = finalize_answer(raw_answer, passages)
+            yield line({
+                "type": "final",
+                "answer": answer,
+                "citations": [_passage_preview(c) for c in citations],
+                "sufficient_evidence": sufficient,
+            })
+        except AnswerGenerationError as exc:
+            yield line({"type": "error", "detail": str(exc)})
+
+    return StreamingResponse(
+        events(),
+        media_type="application/x-ndjson",
+        headers={"Cache-Control": "no-store", "X-Accel-Buffering": "no"},
+    )
+
+
 @app.get("/documents/{document_id}/download")
 def download_document(
     document_id: int,

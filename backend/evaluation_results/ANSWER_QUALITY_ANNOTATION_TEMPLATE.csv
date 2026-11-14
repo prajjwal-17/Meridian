@@ -1,0 +1,2 @@
+case_id,mode,answer,citation_ids,source_chunk_ids,claim_id,claim_text,support_rating,contradiction,groundedness,annotator_notes
+example_case,hybrid_rerank,"Paste generated answer here","C1;C2","5698;5701",claim-1,"Copy one factual claim from the answer",0,no,0,"Use support_rating: 0=unsupported, 1=partially supported, 2=fully supported"

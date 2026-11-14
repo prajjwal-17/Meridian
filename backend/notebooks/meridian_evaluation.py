@@ -61,7 +61,7 @@ class EvaluationCase:
     forbidden_sources: tuple[str, ...]
 
 
-CASES = (
+BASE_CASES = (
     EvaluationCase(
         "hr_department",
         "USR-00003",
@@ -145,6 +145,53 @@ CASES = (
 )
 
 
+QUERY_VARIANTS = {
+    "hr_department": (
+        "How many days of annual, sick, and casual leave are provided to employees?",
+        "What are the leave approval and attendance requirements?",
+    ),
+    "engineering_team": (
+        "What standards govern communication between backend microservices?",
+        "Which integration practices are required for engineering services?",
+    ),
+    "multi_department_overlap": (
+        "How are employee reimbursements and vendor approvals handled?",
+        "What rules apply to expense claims and vendor management?",
+    ),
+    "restricted_allowed": (
+        "What does the annual budget allocation report say about departments?",
+    ),
+    "restricted_denied": (
+        "Summarize the restricted annual budget document.",
+    ),
+    "team_denied": (
+        "What steps are required to submit an employee expense claim?",
+    ),
+    "it_department": (
+        "What controls are required for enterprise access management?",
+    ),
+    "no_relevant_evidence": (
+        "What will Meridian's revenue be in the year 2040?",
+    ),
+}
+
+
+CASES = BASE_CASES + tuple(
+    EvaluationCase(
+        f"{case.case_id}_variant_{index}",
+        case.user_id,
+        case.user_label,
+        case.departments,
+        case.teams,
+        question,
+        case.relevant_sources,
+        case.forbidden_sources,
+    )
+    for case in BASE_CASES
+    for index, question in enumerate(QUERY_VARIANTS.get(case.case_id, ()), start=1)
+)
+
+
 def context_for(case: EvaluationCase) -> PermissionContext:
     return PermissionContext(
         user_id=case.user_id,
@@ -200,56 +247,66 @@ def metrics(case: EvaluationCase, returned: list[str]) -> dict[str, Any]:
     }
 
 
-def run(modes: tuple[str, ...] = ("bm25", "dense", "hybrid", "hybrid_rerank", "graph"), top_k: int = 10) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+def run(
+    modes: tuple[str, ...] = ("bm25", "dense", "hybrid", "hybrid_rerank", "graph"),
+    top_k: int = 10,
+    repeats: int = 1,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    if repeats <= 0:
+        raise ValueError("repeats must be positive")
     rows: list[dict[str, Any]] = []
     started_all = time.perf_counter()
     with SessionLocal() as db:
         for case in CASES:
-            for mode in modes:
-                started = time.perf_counter()
-                row: dict[str, Any] = {
-                    "case_id": case.case_id,
-                    "user": case.user_label,
-                    "user_id": case.user_id,
-                    "mode": mode,
-                    "question": case.question,
-                    "status": "success",
-                    "error": "",
-                }
-                try:
-                    results = retrieve(db, mode, case, top_k=top_k)
-                    returned = unique_sources(results)
-                    row.update(metrics(case, returned))
-                    row["returned_sources"] = returned
-                    row["result_count"] = len(results)
-                    row["chunk_ids"] = [item.get("chunk_id") for item in results]
-                    row["scores"] = [
-                        item.get("cross_encoder_score", item.get("rrf_score", item.get("graph_score", item.get("bm25_score", item.get("similarity")))))
-                        for item in results
-                    ]
-                except Exception as exc:
-                    row.update({
-                        "status": "error",
-                        "error": f"{type(exc).__name__}: {exc}",
-                        "returned_sources": [],
-                        "result_count": 0,
-                        "chunk_ids": [],
-                        "scores": [],
-                        "hit_at_10": None,
-                        "mrr_at_10": None,
-                        "ndcg_at_10": None,
-                        "acl_pass": False,
-                        "forbidden_returned": [],
-                        "expected_returned": [],
-                    })
-                row["latency_ms"] = round((time.perf_counter() - started) * 1000, 2)
-                rows.append(row)
-                print(f"{row['status'].upper():7} {case.case_id:24} {mode:14} {row['latency_ms']:9.2f} ms | returned={row.get('returned_sources', [])} | ACL={row.get('acl_pass')}")
+            for trial in range(1, repeats + 1):
+                for mode in modes:
+                    started = time.perf_counter()
+                    row: dict[str, Any] = {
+                        "case_id": case.case_id,
+                        "trial": trial,
+                        "user": case.user_label,
+                        "user_id": case.user_id,
+                        "mode": mode,
+                        "question": case.question,
+                        "status": "success",
+                        "error": "",
+                    }
+                    try:
+                        results = retrieve(db, mode, case, top_k=top_k)
+                        returned = unique_sources(results)
+                        row.update(metrics(case, returned))
+                        row["returned_sources"] = returned
+                        row["result_count"] = len(results)
+                        row["chunk_ids"] = [item.get("chunk_id") for item in results]
+                        row["scores"] = [
+                            item.get("cross_encoder_score", item.get("rrf_score", item.get("graph_score", item.get("bm25_score", item.get("similarity")))))
+                            for item in results
+                        ]
+                    except Exception as exc:
+                        row.update({
+                            "status": "error",
+                            "error": f"{type(exc).__name__}: {exc}",
+                            "returned_sources": [],
+                            "result_count": 0,
+                            "chunk_ids": [],
+                            "scores": [],
+                            "hit_at_10": None,
+                            "mrr_at_10": None,
+                            "ndcg_at_10": None,
+                            "acl_pass": False,
+                            "forbidden_returned": [],
+                            "expected_returned": [],
+                        })
+                    row["latency_ms"] = round((time.perf_counter() - started) * 1000, 2)
+                    rows.append(row)
+                    print(f"{row['status'].upper():7} {case.case_id:32} trial={trial} {mode:14} {row['latency_ms']:9.2f} ms | returned={row.get('returned_sources', [])} | ACL={row.get('acl_pass')}")
 
     successful = [row for row in rows if row["status"] == "success"]
     summary: dict[str, Any] = {
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
         "case_count": len(CASES),
+        "base_case_count": len(BASE_CASES),
+        "repeats": repeats,
         "mode_count": len(modes),
         "row_count": len(rows),
         "successful_rows": len(successful),
@@ -263,14 +320,32 @@ def run(modes: tuple[str, ...] = ("bm25", "dense", "hybrid", "hybrid_rerank", "g
     }
     for mode in modes:
         mode_rows = [row for row in successful if row["mode"] == mode]
+        warm_rows = [row for row in mode_rows if row.get("trial", 1) > 1]
+        def mean(key: str) -> float | None:
+            values = [row[key] for row in mode_rows if isinstance(row.get(key), (int, float))]
+            return round(sum(values) / len(values), 4) if values else None
+
+        def ci95(key: str) -> list[float] | None:
+            values = [float(row[key]) for row in mode_rows if isinstance(row.get(key), (int, float))]
+            if len(values) < 2:
+                return None
+            average = sum(values) / len(values)
+            variance = sum((value - average) ** 2 for value in values) / (len(values) - 1)
+            margin = 1.96 * (variance ** 0.5) / (len(values) ** 0.5)
+            return [round(average - margin, 4), round(average + margin, 4)]
+
         summary["by_mode"][mode] = {
             "rows": len(mode_rows),
             "mean_latency_ms": round(sum(row["latency_ms"] for row in mode_rows) / len(mode_rows), 2) if mode_rows else None,
+            "warm_mean_latency_ms": round(sum(row["latency_ms"] for row in warm_rows) / len(warm_rows), 2) if warm_rows else None,
             "hit_at_10": round(sum(bool(row["hit_at_10"]) for row in mode_rows if row["hit_at_10"] is not None) / max(1, sum(row["hit_at_10"] is not None for row in mode_rows)), 4) if mode_rows else None,
-            "mrr_at_10": round(sum(row["mrr_at_10"] for row in mode_rows if row["mrr_at_10"] is not None) / len(mode_rows), 4) if mode_rows else None,
-            "ndcg_at_10": round(sum(row["ndcg_at_10"] for row in mode_rows if row["ndcg_at_10"] is not None) / len(mode_rows), 4) if mode_rows else None,
+            "mrr_at_10": mean("mrr_at_10"),
+            "ndcg_at_10": mean("ndcg_at_10"),
             "acl_pass_rate": round(sum(bool(row["acl_pass"]) for row in mode_rows) / len(mode_rows), 4) if mode_rows else None,
             "forbidden_leakage_rows": sum(bool(row["forbidden_returned"]) for row in mode_rows),
+            "mrr_at_10_ci95": ci95("mrr_at_10"),
+            "ndcg_at_10_ci95": ci95("ndcg_at_10"),
+            "latency_ms_ci95": ci95("latency_ms"),
         }
     return rows, summary
 
@@ -279,7 +354,7 @@ def write_outputs(rows: list[dict[str, Any]], summary: dict[str, Any], output_di
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "enterprise_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     (output_dir / "enterprise_results.json").write_text(json.dumps(rows, indent=2), encoding="utf-8")
-    fields = ["case_id", "user", "user_id", "mode", "status", "question", "returned_sources", "expected_returned", "forbidden_returned", "hit_at_10", "mrr_at_10", "ndcg_at_10", "acl_pass", "result_count", "latency_ms", "error"]
+    fields = ["case_id", "trial", "user", "user_id", "mode", "status", "question", "returned_sources", "expected_returned", "forbidden_returned", "hit_at_10", "mrr_at_10", "ndcg_at_10", "acl_pass", "result_count", "latency_ms", "error"]
     with (output_dir / "enterprise_results.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
@@ -332,9 +407,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Read-only enterprise retrieval and ACL evaluation")
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument("--top-k", type=int, default=10)
+    parser.add_argument("--repeats", type=int, default=1, help="Repeat each case/mode in the same process for variance estimates")
     parser.add_argument("--modes", nargs="+", default=["bm25", "dense", "hybrid", "hybrid_rerank", "graph"])
     args = parser.parse_args()
-    rows, summary = run(tuple(args.modes), args.top_k)
+    rows, summary = run(tuple(args.modes), args.top_k, args.repeats)
     write_outputs(rows, summary, args.output_dir)
     print(json.dumps(summary, indent=2))
     return 1 if summary["error_rows"] else 0

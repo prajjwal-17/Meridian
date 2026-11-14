@@ -2,7 +2,7 @@
 
 ## Scope
 
-This report records a read-only evaluation of the existing Meridian retrieval implementation against eight enterprise access and relevance scenarios. The evaluation was executed against the local PostgreSQL/pgvector database with Hugging Face offline mode enabled. It did not modify documents, chunks, embeddings, ACLs, or storage objects.
+This report records a read-only evaluation of the existing Meridian retrieval implementation against 19 enterprise access and relevance cases, including paraphrased query variants. The evaluation was executed against the local PostgreSQL/pgvector database with Hugging Face offline mode enabled. It did not modify documents, chunks, embeddings, ACLs, or storage objects.
 
 The evaluated modes were:
 
@@ -45,17 +45,17 @@ For each mode and case, the evaluator records:
 - Forbidden source leakage.
 - Returned source IDs and chunk IDs.
 
-The enterprise scenarios use source identities such as `HR-001` and `ENG-003`, rather than internal PostgreSQL document IDs. This keeps the evaluation stable if database IDs change.
+The enterprise scenarios use source identities such as `HR-001` and `ENG-003`, rather than internal PostgreSQL document IDs. This keeps the evaluation stable if database IDs change. Each case was repeated twice in the same process to separate first-use model loading from steady-state retrieval.
 
 ## Measured aggregate results
 
 | Mode | Hit@10 | MRR@10 | nDCG@10 | ACL pass rate | Mean latency |
 |---|---:|---:|---:|---:|---:|
-| BM25 | 1.0000 | 0.5250 | 0.5484 | 1.0000 | 11.84 ms |
-| Dense | 1.0000 | 0.5625 | 0.5789 | 1.0000 | 1066.94 ms |
-| Hybrid | 1.0000 | 0.5625 | 0.5789 | 1.0000 | 19.84 ms |
-| Hybrid + reranker | 1.0000 | 0.6250 | 0.6250 | 1.0000 | 281.74 ms |
-| Entity graph | 1.0000 | 0.4792 | 0.4832 | 1.0000 | 50.04 ms |
+| BM25 | 1.0000 | 0.6158 | 0.6248 | 1.0000 | 7.34 ms |
+| Dense | 1.0000 | 0.6579 | 0.6648 | 1.0000 | 244.91 ms |
+| Hybrid | 1.0000 | 0.6579 | 0.6648 | 1.0000 | 21.02 ms |
+| Hybrid + reranker | 1.0000 | 0.6842 | 0.6842 | 1.0000 | 294.12 ms |
+| Entity graph | 1.0000 | 0.5175 | 0.5345 | 1.0000 | 48.22 ms |
 
 Observed results:
 
@@ -63,10 +63,10 @@ Observed results:
 - Hybrid matched dense on MRR and nDCG.
 - Hybrid + reranking produced the best MRR and nDCG in this run.
 - Entity graph retrieval had lower MRR/nDCG than hybrid + reranking, despite lower average latency than dense retrieval.
-- All 40 rows passed the ACL checks.
+- All 190 rows passed the ACL checks.
 - No forbidden source IDs were returned in the final run.
 
-These numbers should not be presented as general conclusions. The enterprise test set is small and synthetic. They are valid as a controlled demonstration of the current implementation.
+These numbers should not be presented as general conclusions. The enterprise test set is synthetic and still small, although it now includes paraphrased queries and repeated trials. They are valid as a controlled demonstration of the current implementation.
 
 ## Runtime observations
 
@@ -74,7 +74,7 @@ The dense mode’s mean latency includes the first local embedding-model initial
 
 The cross-encoder was initialized once in the evaluation process and reused across reranking calls. Hybrid+rereanking added model inference time but improved rank-sensitive metrics in this run.
 
-The total five-mode evaluation completed in approximately 11.45 seconds after model caches were available. The first model-loading event made the initial dense and reranker calls substantially slower.
+The total five-mode evaluation completed in approximately 23.40 seconds for 19 cases and two trials after model caches were available. The first model-loading event made the initial dense and reranker calls substantially slower. `enterprise_summary.json` also includes warm-trial latency and 95% confidence intervals.
 
 ## Security results
 
@@ -91,13 +91,21 @@ The test also verified the important distinction between an ACL failure and a re
 
 ## Current limitations
 
-- The evaluation set contains eight hand-authored scenarios, not a statistically representative enterprise benchmark.
+- The evaluation set contains 19 synthetic cases, not a statistically representative enterprise benchmark.
 - Expected relevance labels are document-level source labels, not manually graded passage-level labels.
 - Hit@10 is saturated at 1.0 and therefore does not distinguish the modes well; MRR and nDCG are more informative here.
 - Entity graph retrieval remains sensitive to rule-based entity quality and graph coverage.
 - Answer factuality is not measured by these retrieval metrics.
 - Citation integrity does not prove claim-level factual correctness.
 - PNG plots were generated successfully after installing the optional notebook dependency and selecting the non-interactive `Agg` backend.
+
+For answer-quality annotation, use:
+
+```text
+backend/evaluation_results/ANSWER_QUALITY_ANNOTATION_TEMPLATE.csv
+```
+
+This template separates retrieval/citation validity from human judgments of claim support, contradiction, and groundedness. It intentionally does not automatically claim factual correctness from the presence of citations.
 
 Install the optional notebook dependency before running in Jupyter:
 
