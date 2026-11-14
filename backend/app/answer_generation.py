@@ -164,10 +164,14 @@ def _has_substantive_claim(answer: str) -> bool:
     """
 
     sentences = re.split(r"(?<=[.!?])\s+|\n+", answer)
-    return any(
-        _CITATION_PATTERN.search(sentence) and not _NEGATIVE_CLAIM.search(sentence)
-        for sentence in sentences
-    )
+    for sentence in sentences:
+        if not _CITATION_PATTERN.search(sentence) or _NEGATIVE_CLAIM.search(sentence):
+            continue
+        # A line holding only citation markers ("[C1]") asserts nothing.
+        words = re.findall(r"[A-Za-z]{2,}", _CITATION_PATTERN.sub(" ", sentence))
+        if len(words) >= 3:
+            return True
+    return False
 
 
 def _validated_citations(

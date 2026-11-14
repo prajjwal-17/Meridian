@@ -156,6 +156,17 @@ class AnswerGenerationTests(unittest.TestCase):
         self.assertTrue(sufficient)
         self.assertEqual(len(citations), 1)
 
+    def test_citation_only_line_is_not_a_claim(self):
+        from app.answer_generation import finalize_answer
+
+        hedge = (
+            "The annual department budget allocation report is described in FIN-004.\n\n"
+            "• The description of this report is not provided in the given context.\n\n[C1]"
+        )
+        _, citations, sufficient = finalize_answer(hedge, [{"citation_id": "C1", "text": "x"}])
+        self.assertFalse(sufficient)
+        self.assertEqual(citations, [])
+
     def test_abstain_token_is_respected(self):
         from app.answer_generation import ABSTAIN_TOKEN, finalize_answer
 
