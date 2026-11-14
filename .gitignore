@@ -28,3 +28,20 @@ test_users.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Node / frontend build output
+node_modules/
+dist/
+
+# Logs
+*.log
+
+# Local tooling and generated artifacts (not part of the application)
+# - graphify-out: code-graph output from the graphify tool
+# - .oil-ui: design process files (oil-ui screenshots and notes)
+# - .claude: local Claude Code settings (e.g. launch.json)
+# - PM_Report: course report documents, kept outside the codebase
+graphify-out/
+.oil-ui/
+.claude/
+PM_Report/

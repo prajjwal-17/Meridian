@@ -1,9 +1,0 @@
-{
-  "0": "main.py",
-  "1": "document_processor.py",
-  "2": "sqlalchemy_orm",
-  "4": "database.py",
-  "6": "graph_retrieval.py",
-  "7": "entity_graph.py",
-  "8": "Document"
-}
