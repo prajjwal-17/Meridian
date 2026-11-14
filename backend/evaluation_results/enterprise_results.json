@@ -1,6 +1,7 @@
 [
   {
     "case_id": "hr_department",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "bm25",
@@ -45,10 +46,11 @@
       1.8559656312459536,
       1.3423527174617615
     ],
-    "latency_ms": 54.81
+    "latency_ms": 42.47
   },
   {
     "case_id": "hr_department",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "dense",
@@ -93,10 +95,11 @@
       0.3421467934759388,
       0.3362048368515027
     ],
-    "latency_ms": 8435.42
+    "latency_ms": 7852.49
   },
   {
     "case_id": "hr_department",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "hybrid",
@@ -141,10 +144,11 @@
       0.028814262023217248,
       0.028577260665441927
     ],
-    "latency_ms": 19.18
+    "latency_ms": 20.26
   },
   {
     "case_id": "hr_department",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "hybrid_rerank",
@@ -189,10 +193,11 @@
       -9.850589752197266,
       -10.271001815795898
     ],
-    "latency_ms": 437.49
+    "latency_ms": 470.34
   },
   {
     "case_id": "hr_department",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "graph",
@@ -237,10 +242,256 @@
       1.0,
       1.0
     ],
-    "latency_ms": 74.33
+    "latency_ms": 73.03
+  },
+  {
+    "case_id": "hr_department",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "bm25",
+    "question": "What does the employee leave and attendance policy say?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-004",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5717,
+      5706,
+      5700,
+      5701,
+      5716,
+      5707,
+      5705,
+      5704
+    ],
+    "scores": [
+      6.39335098364746,
+      5.585494738031517,
+      4.753900408710078,
+      4.081482857259317,
+      4.046021924486503,
+      3.6503292316676865,
+      2.870780140169538,
+      2.0714898193546913,
+      1.8559656312459536,
+      1.3423527174617615
+    ],
+    "latency_ms": 5.0
+  },
+  {
+    "case_id": "hr_department",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "dense",
+    "question": "What does the employee leave and attendance policy say?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.6309297535714575,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-004",
+      "HR-001",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5698,
+      5701,
+      5699,
+      5705,
+      5700,
+      5706,
+      5707,
+      5703,
+      5702
+    ],
+    "scores": [
+      0.6709499751389104,
+      0.6149357557296753,
+      0.5979249120995466,
+      0.5812325477600098,
+      0.5651913544421591,
+      0.5560747053578682,
+      0.48896470731707264,
+      0.4432109594345093,
+      0.3421467934759388,
+      0.3362048368515027
+    ],
+    "latency_ms": 13.16
+  },
+  {
+    "case_id": "hr_department",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid",
+    "question": "What does the employee leave and attendance policy say?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-004",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5717,
+      5699,
+      5701,
+      5706,
+      5700,
+      5705,
+      5707,
+      5716,
+      5703
+    ],
+    "scores": [
+      0.03252247488101534,
+      0.032266458495966696,
+      0.031754032258064516,
+      0.031024531024531024,
+      0.03055037313432836,
+      0.030536130536130537,
+      0.029877369007803793,
+      0.029411764705882353,
+      0.028814262023217248,
+      0.028577260665441927
+    ],
+    "latency_ms": 19.6
+  },
+  {
+    "case_id": "hr_department",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid_rerank",
+    "question": "What does the employee leave and attendance policy say?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5706,
+      5717,
+      5699,
+      5705,
+      5701,
+      5700,
+      5704,
+      5716,
+      5703
+    ],
+    "scores": [
+      5.561168670654297,
+      3.029482841491699,
+      2.8665823936462402,
+      0.6427539587020874,
+      -2.9636857509613037,
+      -3.463986396789551,
+      -5.2237467765808105,
+      -6.5776448249816895,
+      -9.850589752197266,
+      -10.271001815795898
+    ],
+    "latency_ms": 341.66
+  },
+  {
+    "case_id": "hr_department",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "graph",
+    "question": "What does the employee leave and attendance policy say?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5700,
+      5701,
+      5703,
+      5704,
+      5705,
+      5706,
+      5707,
+      5713
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 72.95
   },
   {
     "case_id": "engineering_team",
+    "trial": 1,
     "user": "Priya Nair",
     "user_id": "USR-00005",
     "mode": "bm25",
@@ -284,10 +535,11 @@
       0.8416437998073669,
       0.2299776813234913
     ],
-    "latency_ms": 5.22
+    "latency_ms": 8.0
   },
   {
     "case_id": "engineering_team",
+    "trial": 1,
     "user": "Priya Nair",
     "user_id": "USR-00005",
     "mode": "dense",
@@ -331,10 +583,11 @@
       0.20448723706679162,
       0.1362197913992531
     ],
-    "latency_ms": 12.95
+    "latency_ms": 16.86
   },
   {
     "case_id": "engineering_team",
+    "trial": 1,
     "user": "Priya Nair",
     "user_id": "USR-00005",
     "mode": "hybrid",
@@ -378,10 +631,11 @@
       0.029877369007803793,
       0.029631255487269532
     ],
-    "latency_ms": 17.15
+    "latency_ms": 20.41
   },
   {
     "case_id": "engineering_team",
+    "trial": 1,
     "user": "Priya Nair",
     "user_id": "USR-00005",
     "mode": "hybrid_rerank",
@@ -425,10 +679,11 @@
       -10.839698791503906,
       -10.847047805786133
     ],
-    "latency_ms": 196.62
+    "latency_ms": 249.16
   },
   {
     "case_id": "engineering_team",
+    "trial": 1,
     "user": "Priya Nair",
     "user_id": "USR-00005",
     "mode": "graph",
@@ -466,10 +721,245 @@
       1.0,
       1.0
     ],
-    "latency_ms": 31.31
+    "latency_ms": 26.66
+  },
+  {
+    "case_id": "engineering_team",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "bm25",
+    "question": "How should backend services communicate and integrate?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5722,
+      5705,
+      5718,
+      5720,
+      5706,
+      5723,
+      5703,
+      5719,
+      5721,
+      5704
+    ],
+    "scores": [
+      3.4700301508907554,
+      2.887077646427538,
+      2.500574983663805,
+      2.260545038541344,
+      2.0077713077833885,
+      1.718608441860723,
+      1.2442844379977807,
+      1.1266737080363707,
+      0.8416437998073669,
+      0.2299776813234913
+    ],
+    "latency_ms": 4.81
+  },
+  {
+    "case_id": "engineering_team",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "dense",
+    "question": "How should backend services communicate and integrate?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5718,
+      5722,
+      5719,
+      5704,
+      5721,
+      5720,
+      5723,
+      5703,
+      5706,
+      5705
+    ],
+    "scores": [
+      0.5823624134063721,
+      0.5319184343863477,
+      0.4636153302421977,
+      0.3248946167497224,
+      0.3243499994277954,
+      0.28768794013929777,
+      0.2861117422580719,
+      0.2474130244604935,
+      0.20448723706679162,
+      0.1362197913992531
+    ],
+    "latency_ms": 13.14
+  },
+  {
+    "case_id": "engineering_team",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "hybrid",
+    "question": "How should backend services communicate and integrate?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5722,
+      5718,
+      5720,
+      5719,
+      5705,
+      5723,
+      5704,
+      5706,
+      5721,
+      5703
+    ],
+    "scores": [
+      0.03252247488101534,
+      0.032266458495966696,
+      0.030776515151515152,
+      0.03057889822595705,
+      0.0304147465437788,
+      0.03007688828584351,
+      0.029910714285714284,
+      0.029877369007803793,
+      0.029877369007803793,
+      0.029631255487269532
+    ],
+    "latency_ms": 18.18
+  },
+  {
+    "case_id": "engineering_team",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "hybrid_rerank",
+    "question": "How should backend services communicate and integrate?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5718,
+      5722,
+      5723,
+      5719,
+      5720,
+      5704,
+      5706,
+      5721,
+      5705,
+      5703
+    ],
+    "scores": [
+      4.35167121887207,
+      1.839066743850708,
+      -5.575596809387207,
+      -6.106806755065918,
+      -7.086852073669434,
+      -9.319524765014648,
+      -10.113142013549805,
+      -10.466486930847168,
+      -10.839698791503906,
+      -10.847047805786133
+    ],
+    "latency_ms": 263.93
+  },
+  {
+    "case_id": "engineering_team",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "graph",
+    "question": "How should backend services communicate and integrate?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.6309297535714575,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "HR-002",
+      "ENG-003"
+    ],
+    "result_count": 7,
+    "chunk_ids": [
+      5703,
+      5707,
+      5718,
+      5719,
+      5721,
+      5722,
+      5723
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 27.54
   },
   {
     "case_id": "multi_department_overlap",
+    "trial": 1,
     "user": "Grace Wilson",
     "user_id": "USR-00009",
     "mode": "bm25",
@@ -517,10 +1007,11 @@
       4.173005515520186,
       2.7670229507960684
     ],
-    "latency_ms": 6.48
+    "latency_ms": 6.37
   },
   {
     "case_id": "multi_department_overlap",
+    "trial": 1,
     "user": "Grace Wilson",
     "user_id": "USR-00009",
     "mode": "dense",
@@ -567,10 +1058,11 @@
       0.5011794864428358,
       0.49927049879607655
     ],
-    "latency_ms": 16.22
+    "latency_ms": 15.47
   },
   {
     "case_id": "multi_department_overlap",
+    "trial": 1,
     "user": "Grace Wilson",
     "user_id": "USR-00009",
     "mode": "hybrid",
@@ -617,10 +1109,11 @@
       0.028782894736842105,
       0.028594771241830064
     ],
-    "latency_ms": 22.12
+    "latency_ms": 21.54
   },
   {
     "case_id": "multi_department_overlap",
+    "trial": 1,
     "user": "Grace Wilson",
     "user_id": "USR-00009",
     "mode": "hybrid_rerank",
@@ -667,10 +1160,11 @@
       -4.254962921142578,
       -4.954917907714844
     ],
-    "latency_ms": 386.0
+    "latency_ms": 482.79
   },
   {
     "case_id": "multi_department_overlap",
+    "trial": 1,
     "user": "Grace Wilson",
     "user_id": "USR-00009",
     "mode": "graph",
@@ -715,10 +1209,265 @@
       1.0,
       1.0
     ],
-    "latency_ms": 76.38
+    "latency_ms": 62.64
+  },
+  {
+    "case_id": "multi_department_overlap",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "bm25",
+    "question": "What are the expense reimbursement and vendor management requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "FIN-002",
+      "OPS-002",
+      "OPS-001"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5732,
+      5734,
+      5768,
+      5766,
+      5763,
+      5769,
+      5735,
+      5733,
+      5764
+    ],
+    "scores": [
+      6.1424961616180465,
+      5.427065032688129,
+      5.31506025846066,
+      4.801670398366429,
+      4.721621424133673,
+      4.503903642519104,
+      4.334684214335336,
+      4.301190955589714,
+      4.173005515520186,
+      2.7670229507960684
+    ],
+    "latency_ms": 6.62
+  },
+  {
+    "case_id": "multi_department_overlap",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "dense",
+    "question": "What are the expense reimbursement and vendor management requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5733,
+      5739,
+      5732,
+      5737,
+      5768,
+      5738,
+      5766,
+      5767,
+      5736,
+      5769
+    ],
+    "scores": [
+      0.6271130664877267,
+      0.6152976751327515,
+      0.6097356546240308,
+      0.5771316885948181,
+      0.5754199281084591,
+      0.5490783452987671,
+      0.5277835130691528,
+      0.5222360491752625,
+      0.5011794864428358,
+      0.49927049879607655
+    ],
+    "latency_ms": 16.18
+  },
+  {
+    "case_id": "multi_department_overlap",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "hybrid",
+    "question": "What are the expense reimbursement and vendor management requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "FIN-002",
+      "OPS-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5732,
+      5768,
+      5733,
+      5766,
+      5734,
+      5738,
+      5769,
+      5737,
+      5735
+    ],
+    "scores": [
+      0.03252247488101534,
+      0.03200204813108039,
+      0.031009615384615385,
+      0.030886196246139225,
+      0.030309988518943745,
+      0.029957522915269395,
+      0.029236022193768675,
+      0.029211087420042643,
+      0.028782894736842105,
+      0.028594771241830064
+    ],
+    "latency_ms": 20.18
+  },
+  {
+    "case_id": "multi_department_overlap",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "hybrid_rerank",
+    "question": "What are the expense reimbursement and vendor management requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "OPS-002",
+      "FIN-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5768,
+      5766,
+      5734,
+      5732,
+      5769,
+      5733,
+      5735,
+      5767,
+      5738
+    ],
+    "scores": [
+      2.3316571712493896,
+      -0.4545723497867584,
+      -1.4588873386383057,
+      -1.753964900970459,
+      -1.8331894874572754,
+      -2.1393795013427734,
+      -2.298247814178467,
+      -3.7663755416870117,
+      -4.254962921142578,
+      -4.954917907714844
+    ],
+    "latency_ms": 485.58
+  },
+  {
+    "case_id": "multi_department_overlap",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "graph",
+    "question": "What are the expense reimbursement and vendor management requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.3333333333333333,
+    "ndcg_at_10": 0.23463936301137822,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002"
+    ],
+    "returned_sources": [
+      "HR-002",
+      "OPS-001",
+      "FIN-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5703,
+      5704,
+      5705,
+      5707,
+      5764,
+      5732,
+      5733,
+      5734,
+      5735,
+      5763
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 62.96
   },
   {
     "case_id": "restricted_allowed",
+    "trial": 1,
     "user": "Sofia Chen",
     "user_id": "USR-00007",
     "mode": "bm25",
@@ -758,10 +1507,11 @@
       0.7983967143767221,
       0.39373203356042985
     ],
-    "latency_ms": 5.04
+    "latency_ms": 4.58
   },
   {
     "case_id": "restricted_allowed",
+    "trial": 1,
     "user": "Sofia Chen",
     "user_id": "USR-00007",
     "mode": "dense",
@@ -807,6 +1557,7 @@
   },
   {
     "case_id": "restricted_allowed",
+    "trial": 1,
     "user": "Sofia Chen",
     "user_id": "USR-00007",
     "mode": "hybrid",
@@ -848,10 +1599,11 @@
       0.029418126757516764,
       0.014925373134328358
     ],
-    "latency_ms": 18.82
+    "latency_ms": 17.83
   },
   {
     "case_id": "restricted_allowed",
+    "trial": 1,
     "user": "Sofia Chen",
     "user_id": "USR-00007",
     "mode": "hybrid_rerank",
@@ -893,10 +1645,11 @@
       -11.189252853393555,
       -11.40394401550293
     ],
-    "latency_ms": 173.55
+    "latency_ms": 211.99
   },
   {
     "case_id": "restricted_allowed",
+    "trial": 1,
     "user": "Sofia Chen",
     "user_id": "USR-00007",
     "mode": "graph",
@@ -932,10 +1685,233 @@
       1.0,
       1.0
     ],
-    "latency_ms": 53.79
+    "latency_ms": 49.98
+  },
+  {
+    "case_id": "restricted_allowed",
+    "trial": 2,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "bm25",
+    "question": "Summarize the annual department budget allocation report.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 8,
+    "chunk_ids": [
+      5740,
+      5743,
+      5742,
+      5741,
+      5703,
+      5705,
+      5704,
+      5706
+    ],
+    "scores": [
+      7.733009519812526,
+      6.464276385196626,
+      4.111822803707546,
+      2.5643120680002047,
+      1.4603141970281217,
+      0.8377196495541688,
+      0.7983967143767221,
+      0.39373203356042985
+    ],
+    "latency_ms": 4.11
+  },
+  {
+    "case_id": "restricted_allowed",
+    "trial": 2,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "dense",
+    "question": "Summarize the annual department budget allocation report.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5740,
+      5742,
+      5743,
+      5741,
+      5706,
+      5703,
+      5707,
+      5705,
+      5704
+    ],
+    "scores": [
+      0.6334634045682319,
+      0.5405355047541255,
+      0.5192190385795785,
+      0.37475333364288077,
+      0.28646033567663,
+      0.25340211350892616,
+      0.227387086904819,
+      0.2059258573143652,
+      0.15458885864648708
+    ],
+    "latency_ms": 13.39
+  },
+  {
+    "case_id": "restricted_allowed",
+    "trial": 2,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "hybrid",
+    "question": "Summarize the annual department budget allocation report.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5740,
+      5743,
+      5742,
+      5741,
+      5703,
+      5706,
+      5705,
+      5704,
+      5707
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.03200204813108039,
+      0.03200204813108039,
+      0.03125,
+      0.030536130536130537,
+      0.030090497737556562,
+      0.029857397504456328,
+      0.029418126757516764,
+      0.014925373134328358
+    ],
+    "latency_ms": 18.91
+  },
+  {
+    "case_id": "restricted_allowed",
+    "trial": 2,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "hybrid_rerank",
+    "question": "Summarize the annual department budget allocation report.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5740,
+      5742,
+      5743,
+      5741,
+      5706,
+      5705,
+      5703,
+      5704,
+      5707
+    ],
+    "scores": [
+      6.505799293518066,
+      1.4964909553527832,
+      1.419565200805664,
+      -4.539464950561523,
+      -10.838376998901367,
+      -10.962936401367188,
+      -10.986231803894043,
+      -11.189252853393555,
+      -11.40394401550293
+    ],
+    "latency_ms": 213.11
+  },
+  {
+    "case_id": "restricted_allowed",
+    "trial": 2,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "graph",
+    "question": "Summarize the annual department budget allocation report.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 6,
+    "chunk_ids": [
+      5742,
+      5743,
+      5705,
+      5707,
+      5740,
+      5741
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 50.68
   },
   {
     "case_id": "restricted_denied",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "bm25",
@@ -978,10 +1954,11 @@
       2.418733820683831,
       2.1213081131557328
     ],
-    "latency_ms": 5.12
+    "latency_ms": 5.07
   },
   {
     "case_id": "restricted_denied",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "dense",
@@ -1024,10 +2001,11 @@
       0.2640715224657646,
       0.24456898900455348
     ],
-    "latency_ms": 13.89
+    "latency_ms": 13.37
   },
   {
     "case_id": "restricted_denied",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "hybrid",
@@ -1070,10 +2048,11 @@
       0.0288981288981289,
       0.02877846790890269
     ],
-    "latency_ms": 18.96
+    "latency_ms": 19.51
   },
   {
     "case_id": "restricted_denied",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "hybrid_rerank",
@@ -1116,10 +2095,11 @@
       -11.058706283569336,
       -11.10136604309082
     ],
-    "latency_ms": 305.05
+    "latency_ms": 329.48
   },
   {
     "case_id": "restricted_denied",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "graph",
@@ -1156,10 +2136,240 @@
       1.0,
       1.0
     ],
-    "latency_ms": 57.37
+    "latency_ms": 52.81
+  },
+  {
+    "case_id": "restricted_denied",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "bm25",
+    "question": "What is in the annual department budget allocation report?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-001",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5700,
+      5698,
+      5699,
+      5705,
+      5713,
+      5706,
+      5716,
+      5704,
+      5714
+    ],
+    "scores": [
+      8.009671937752529,
+      5.144405131152054,
+      4.185549814939964,
+      3.624126883564754,
+      3.5882882142078554,
+      3.507591854586907,
+      2.8793757492545646,
+      2.8175651516754727,
+      2.418733820683831,
+      2.1213081131557328
+    ],
+    "latency_ms": 5.29
+  },
+  {
+    "case_id": "restricted_denied",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "dense",
+    "question": "What is in the annual department budget allocation report?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-001",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5715,
+      5717,
+      5702,
+      5716,
+      5701,
+      5698,
+      5713,
+      5706,
+      5714,
+      5700
+    ],
+    "scores": [
+      0.3796388578630181,
+      0.3439861722009001,
+      0.3305944004832031,
+      0.3217933582190664,
+      0.30988047660109597,
+      0.29981160163879395,
+      0.2956842603871672,
+      0.2694856363841517,
+      0.2640715224657646,
+      0.24456898900455348
+    ],
+    "latency_ms": 13.43
+  },
+  {
+    "case_id": "restricted_denied",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid",
+    "question": "What is in the annual department budget allocation report?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-001",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5698,
+      5700,
+      5716,
+      5715,
+      5713,
+      5706,
+      5699,
+      5705,
+      5714
+    ],
+    "scores": [
+      0.03252247488101534,
+      0.031024531024531024,
+      0.0304147465437788,
+      0.030330882352941176,
+      0.03028233151183971,
+      0.03007688828584351,
+      0.029631255487269532,
+      0.0293236301369863,
+      0.0288981288981289,
+      0.02877846790890269
+    ],
+    "latency_ms": 19.38
+  },
+  {
+    "case_id": "restricted_denied",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid_rerank",
+    "question": "What is in the annual department budget allocation report?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-001",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5716,
+      5698,
+      5713,
+      5699,
+      5715,
+      5700,
+      5706,
+      5705,
+      5714
+    ],
+    "scores": [
+      1.9079277515411377,
+      -9.179137229919434,
+      -9.558804512023926,
+      -10.357965469360352,
+      -10.594982147216797,
+      -10.601030349731445,
+      -11.009496688842773,
+      -11.014461517333984,
+      -11.058706283569336,
+      -11.10136604309082
+    ],
+    "latency_ms": 317.99
+  },
+  {
+    "case_id": "restricted_denied",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "graph",
+    "question": "What is in the annual department budget allocation report?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 7,
+    "chunk_ids": [
+      5698,
+      5699,
+      5700,
+      5705,
+      5707,
+      5713,
+      5717
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 50.77
   },
   {
     "case_id": "team_denied",
+    "trial": 1,
     "user": "Omar Haddad",
     "user_id": "USR-00008",
     "mode": "bm25",
@@ -1188,10 +2398,11 @@
       1.727936427723301,
       0.8024032084173286
     ],
-    "latency_ms": 3.6
+    "latency_ms": 3.66
   },
   {
     "case_id": "team_denied",
+    "trial": 1,
     "user": "Omar Haddad",
     "user_id": "USR-00008",
     "mode": "dense",
@@ -1222,10 +2433,11 @@
       0.28099874967344163,
       0.2575775461667046
     ],
-    "latency_ms": 15.81
+    "latency_ms": 15.27
   },
   {
     "case_id": "team_denied",
+    "trial": 1,
     "user": "Omar Haddad",
     "user_id": "USR-00008",
     "mode": "hybrid",
@@ -1256,10 +2468,11 @@
       0.03149801587301587,
       0.015384615384615385
     ],
-    "latency_ms": 19.71
+    "latency_ms": 18.17
   },
   {
     "case_id": "team_denied",
+    "trial": 1,
     "user": "Omar Haddad",
     "user_id": "USR-00008",
     "mode": "hybrid_rerank",
@@ -1290,10 +2503,11 @@
       -11.189737319946289,
       -11.204750061035156
     ],
-    "latency_ms": 108.62
+    "latency_ms": 130.56
   },
   {
     "case_id": "team_denied",
+    "trial": 1,
     "user": "Omar Haddad",
     "user_id": "USR-00008",
     "mode": "graph",
@@ -1322,10 +2536,182 @@
       1.0,
       1.0
     ],
-    "latency_ms": 59.34
+    "latency_ms": 51.68
+  },
+  {
+    "case_id": "team_denied",
+    "trial": 2,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "bm25",
+    "question": "What is the employee expense reimbursement process?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 4,
+    "chunk_ids": [
+      5706,
+      5703,
+      5705,
+      5707
+    ],
+    "scores": [
+      3.25214692587853,
+      1.7307529529035728,
+      1.727936427723301,
+      0.8024032084173286
+    ],
+    "latency_ms": 3.77
+  },
+  {
+    "case_id": "team_denied",
+    "trial": 2,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "dense",
+    "question": "What is the employee expense reimbursement process?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5706,
+      5707,
+      5703,
+      5705,
+      5704
+    ],
+    "scores": [
+      0.4387972689391818,
+      0.2965896725654602,
+      0.29563016917525764,
+      0.28099874967344163,
+      0.2575775461667046
+    ],
+    "latency_ms": 13.17
+  },
+  {
+    "case_id": "team_denied",
+    "trial": 2,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "hybrid",
+    "question": "What is the employee expense reimbursement process?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5706,
+      5703,
+      5707,
+      5705,
+      5704
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.03200204813108039,
+      0.031754032258064516,
+      0.03149801587301587,
+      0.015384615384615385
+    ],
+    "latency_ms": 17.73
+  },
+  {
+    "case_id": "team_denied",
+    "trial": 2,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "hybrid_rerank",
+    "question": "What is the employee expense reimbursement process?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5706,
+      5705,
+      5703,
+      5704,
+      5707
+    ],
+    "scores": [
+      -8.837989807128906,
+      -10.88314151763916,
+      -11.146991729736328,
+      -11.189737319946289,
+      -11.204750061035156
+    ],
+    "latency_ms": 126.82
+  },
+  {
+    "case_id": "team_denied",
+    "trial": 2,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "graph",
+    "question": "What is the employee expense reimbursement process?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 4,
+    "chunk_ids": [
+      5703,
+      5705,
+      5706,
+      5707
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 48.91
   },
   {
     "case_id": "it_department",
+    "trial": 1,
     "user": "Noah Patel",
     "user_id": "USR-00010",
     "mode": "bm25",
@@ -1373,10 +2759,11 @@
       3.837688389282554,
       3.3459968044565214
     ],
-    "latency_ms": 9.14
+    "latency_ms": 9.34
   },
   {
     "case_id": "it_department",
+    "trial": 1,
     "user": "Noah Patel",
     "user_id": "USR-00010",
     "mode": "dense",
@@ -1423,10 +2810,11 @@
       0.40141758910312797,
       0.39387974775554324
     ],
-    "latency_ms": 14.55
+    "latency_ms": 15.43
   },
   {
     "case_id": "it_department",
+    "trial": 1,
     "user": "Noah Patel",
     "user_id": "USR-00010",
     "mode": "hybrid",
@@ -1474,10 +2862,11 @@
       0.028258706467661692,
       0.02819138376017471
     ],
-    "latency_ms": 23.44
+    "latency_ms": 21.28
   },
   {
     "case_id": "it_department",
+    "trial": 1,
     "user": "Noah Patel",
     "user_id": "USR-00010",
     "mode": "hybrid_rerank",
@@ -1525,10 +2914,11 @@
       -4.978813171386719,
       -5.018369674682617
     ],
-    "latency_ms": 371.87
+    "latency_ms": 454.93
   },
   {
     "case_id": "it_department",
+    "trial": 1,
     "user": "Noah Patel",
     "user_id": "USR-00010",
     "mode": "graph",
@@ -1570,10 +2960,264 @@
       1.0,
       1.0
     ],
-    "latency_ms": 10.93
+    "latency_ms": 10.69
+  },
+  {
+    "case_id": "it_department",
+    "trial": 2,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "bm25",
+    "question": "What does the enterprise access control policy require?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.2,
+    "ndcg_at_10": 0.38685280723454163,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-003",
+      "ENG-004",
+      "HR-002",
+      "IT-004",
+      "IT-001",
+      "IT-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5756,
+      5731,
+      5707,
+      5761,
+      5744,
+      5747,
+      5749,
+      5728,
+      5750,
+      5746
+    ],
+    "scores": [
+      7.632917051923858,
+      6.780601101720755,
+      6.558367711317917,
+      5.770942047054225,
+      5.76869767273921,
+      5.597828073128698,
+      4.073850547652897,
+      3.910719355834642,
+      3.837688389282554,
+      3.3459968044565214
+    ],
+    "latency_ms": 7.37
+  },
+  {
+    "case_id": "it_department",
+    "trial": 2,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "dense",
+    "question": "What does the enterprise access control policy require?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-001",
+      "HR-002",
+      "IT-004",
+      "IT-003",
+      "IT-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5744,
+      5707,
+      5746,
+      5761,
+      5747,
+      5756,
+      5750,
+      5705,
+      5745,
+      5752
+    ],
+    "scores": [
+      0.6500506430773789,
+      0.5946265104635661,
+      0.5907823091279094,
+      0.5667809168361525,
+      0.5564379889181882,
+      0.5084181720961238,
+      0.41763053817203033,
+      0.4164835314174258,
+      0.40141758910312797,
+      0.39387974775554324
+    ],
+    "latency_ms": 13.23
+  },
+  {
+    "case_id": "it_department",
+    "trial": 2,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "hybrid",
+    "question": "What does the enterprise access control policy require?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.6309297535714575,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "HR-002",
+      "IT-001",
+      "IT-003",
+      "IT-004",
+      "ENG-004",
+      "IT-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5707,
+      5744,
+      5756,
+      5761,
+      5747,
+      5746,
+      5731,
+      5750,
+      5749,
+      5745
+    ],
+    "scores": [
+      0.03200204813108039,
+      0.03177805800756621,
+      0.031544957774465976,
+      0.03125,
+      0.030536130536130537,
+      0.030158730158730156,
+      0.029827662395050816,
+      0.029418126757516764,
+      0.028258706467661692,
+      0.02819138376017471
+    ],
+    "latency_ms": 23.14
+  },
+  {
+    "case_id": "it_department",
+    "trial": 2,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "hybrid_rerank",
+    "question": "What does the enterprise access control policy require?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-001",
+      "IT-003",
+      "HR-002",
+      "ENG-004",
+      "IT-002",
+      "IT-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5744,
+      5756,
+      5747,
+      5707,
+      5731,
+      5750,
+      5761,
+      5746,
+      5749,
+      5730
+    ],
+    "scores": [
+      4.3498992919921875,
+      3.910102605819702,
+      3.0044867992401123,
+      2.3911890983581543,
+      2.3566718101501465,
+      2.1039013862609863,
+      1.7743654251098633,
+      -4.530974864959717,
+      -4.978813171386719,
+      -5.018369674682617
+    ],
+    "latency_ms": 476.91
+  },
+  {
+    "case_id": "it_department",
+    "trial": 2,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "graph",
+    "question": "What does the enterprise access control policy require?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-001",
+      "HR-002",
+      "IT-002",
+      "ENG-004",
+      "IT-003",
+      "IT-004"
+    ],
+    "result_count": 7,
+    "chunk_ids": [
+      5744,
+      5707,
+      5750,
+      5730,
+      5731,
+      5756,
+      5761
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 9.44
   },
   {
     "case_id": "no_relevant_evidence",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "bm25",
@@ -1616,10 +3260,11 @@
       0.9249711708922176,
       0.8646179952447722
     ],
-    "latency_ms": 5.33
+    "latency_ms": 5.1
   },
   {
     "case_id": "no_relevant_evidence",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "dense",
@@ -1662,10 +3307,11 @@
       0.16635910673628962,
       0.14109168754915147
     ],
-    "latency_ms": 12.78
+    "latency_ms": 13.98
   },
   {
     "case_id": "no_relevant_evidence",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "hybrid",
@@ -1708,10 +3354,11 @@
       0.02904040404040404,
       0.028991596638655463
     ],
-    "latency_ms": 19.35
+    "latency_ms": 18.9
   },
   {
     "case_id": "no_relevant_evidence",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "hybrid_rerank",
@@ -1754,10 +3401,11 @@
       -11.173286437988281,
       -11.226661682128906
     ],
-    "latency_ms": 274.73
+    "latency_ms": 351.5
   },
   {
     "case_id": "no_relevant_evidence",
+    "trial": 1,
     "user": "Aisha Khan",
     "user_id": "USR-00003",
     "mode": "graph",
@@ -1792,6 +3440,5363 @@
       1.0,
       1.0
     ],
-    "latency_ms": 36.89
+    "latency_ms": 32.53
+  },
+  {
+    "case_id": "no_relevant_evidence",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "bm25",
+    "question": "What was the company's revenue in 2035?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002",
+      "HR-001",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5706,
+      5705,
+      5699,
+      5703,
+      5704,
+      5700,
+      5702,
+      5701,
+      5716,
+      5714
+    ],
+    "scores": [
+      4.816444425308974,
+      4.2991219523064395,
+      3.9045025733529646,
+      1.8511203222748813,
+      1.8293292757882655,
+      1.8290271586917008,
+      1.7392650656365334,
+      1.368572009304252,
+      0.9249711708922176,
+      0.8646179952447722
+    ],
+    "latency_ms": 5.83
+  },
+  {
+    "case_id": "no_relevant_evidence",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "dense",
+    "question": "What was the company's revenue in 2035?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-004",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5702,
+      5717,
+      5701,
+      5703,
+      5698,
+      5707,
+      5704,
+      5714,
+      5713,
+      5706
+    ],
+    "scores": [
+      0.35413240331016915,
+      0.22456874408088767,
+      0.2192954457646077,
+      0.18921466896359096,
+      0.18846430251215118,
+      0.18477628023765835,
+      0.18351937283517872,
+      0.16720820953699211,
+      0.16635910673628962,
+      0.14109168754915147
+    ],
+    "latency_ms": 14.62
+  },
+  {
+    "case_id": "no_relevant_evidence",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid",
+    "question": "What was the company's revenue in 2035?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5702,
+      5703,
+      5706,
+      5701,
+      5704,
+      5705,
+      5698,
+      5699,
+      5700,
+      5714
+    ],
+    "scores": [
+      0.03131881575727918,
+      0.03125,
+      0.030679156908665108,
+      0.03057889822595705,
+      0.030309988518943745,
+      0.029827662395050816,
+      0.02946912242686891,
+      0.029206349206349208,
+      0.02904040404040404,
+      0.028991596638655463
+    ],
+    "latency_ms": 21.34
+  },
+  {
+    "case_id": "no_relevant_evidence",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid_rerank",
+    "question": "What was the company's revenue in 2035?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5702,
+      5698,
+      5701,
+      5703,
+      5713,
+      5705,
+      5716,
+      5706,
+      5699,
+      5707
+    ],
+    "scores": [
+      -10.151273727416992,
+      -10.711009979248047,
+      -10.762166023254395,
+      -10.812971115112305,
+      -10.980913162231445,
+      -11.13129997253418,
+      -11.136999130249023,
+      -11.172459602355957,
+      -11.173286437988281,
+      -11.226661682128906
+    ],
+    "latency_ms": 343.12
+  },
+  {
+    "case_id": "no_relevant_evidence",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "graph",
+    "question": "What was the company's revenue in 2035?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 6,
+    "chunk_ids": [
+      5698,
+      5699,
+      5705,
+      5706,
+      5707,
+      5713
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 34.12
+  },
+  {
+    "case_id": "hr_department_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "bm25",
+    "question": "How many days of annual, sick, and casual leave are provided to employees?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5705,
+      5713,
+      5700,
+      5706,
+      5716,
+      5717,
+      5703,
+      5714
+    ],
+    "scores": [
+      13.183961259112287,
+      9.284781647007543,
+      4.217230854180645,
+      4.004959004232637,
+      3.9860827671994405,
+      3.906545005814604,
+      3.886693372632021,
+      2.9470388985862623,
+      2.8043945361233074,
+      2.786508856129806
+    ],
+    "latency_ms": 5.07
+  },
+  {
+    "case_id": "hr_department_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "dense",
+    "question": "How many days of annual, sick, and casual leave are provided to employees?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5700,
+      5705,
+      5701,
+      5717,
+      5714,
+      5706,
+      5707,
+      5703
+    ],
+    "scores": [
+      0.5984018088339692,
+      0.5788709772306109,
+      0.4813624344632108,
+      0.4415235589118529,
+      0.39200733399303744,
+      0.3856758381707964,
+      0.3070560740728252,
+      0.2874779954578882,
+      0.27215079831178246,
+      0.25459915344725204
+    ],
+    "latency_ms": 14.89
+  },
+  {
+    "case_id": "hr_department_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid",
+    "question": "How many days of annual, sick, and casual leave are provided to employees?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5705,
+      5700,
+      5706,
+      5717,
+      5713,
+      5714,
+      5701,
+      5703
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.03225806451612903,
+      0.03149801587301587,
+      0.03125763125763126,
+      0.029857397504456328,
+      0.029857397504456328,
+      0.0293236301369863,
+      0.029211087420042643,
+      0.029083245521601686,
+      0.02877846790890269
+    ],
+    "latency_ms": 20.13
+  },
+  {
+    "case_id": "hr_department_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid_rerank",
+    "question": "How many days of annual, sick, and casual leave are provided to employees?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-004",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5716,
+      5700,
+      5717,
+      5714,
+      5706,
+      5705,
+      5701,
+      5702
+    ],
+    "scores": [
+      3.636639356613159,
+      3.292247772216797,
+      -5.828505516052246,
+      -6.554529666900635,
+      -7.615223407745361,
+      -7.897563934326172,
+      -8.628957748413086,
+      -9.542892456054688,
+      -10.048097610473633,
+      -10.486064910888672
+    ],
+    "latency_ms": 358.86
+  },
+  {
+    "case_id": "hr_department_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "graph",
+    "question": "How many days of annual, sick, and casual leave are provided to employees?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5698,
+      5699,
+      5701,
+      5703,
+      5706,
+      5707,
+      5713,
+      5716,
+      5717
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 36.05
+  },
+  {
+    "case_id": "hr_department_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "bm25",
+    "question": "How many days of annual, sick, and casual leave are provided to employees?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5705,
+      5713,
+      5700,
+      5706,
+      5716,
+      5717,
+      5703,
+      5714
+    ],
+    "scores": [
+      13.183961259112287,
+      9.284781647007543,
+      4.217230854180645,
+      4.004959004232637,
+      3.9860827671994405,
+      3.906545005814604,
+      3.886693372632021,
+      2.9470388985862623,
+      2.8043945361233074,
+      2.786508856129806
+    ],
+    "latency_ms": 6.21
+  },
+  {
+    "case_id": "hr_department_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "dense",
+    "question": "How many days of annual, sick, and casual leave are provided to employees?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5700,
+      5705,
+      5701,
+      5717,
+      5714,
+      5706,
+      5707,
+      5703
+    ],
+    "scores": [
+      0.5984018088339692,
+      0.5788709772306109,
+      0.4813624344632108,
+      0.4415235589118529,
+      0.39200733399303744,
+      0.3856758381707964,
+      0.3070560740728252,
+      0.2874779954578882,
+      0.27215079831178246,
+      0.25459915344725204
+    ],
+    "latency_ms": 14.44
+  },
+  {
+    "case_id": "hr_department_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid",
+    "question": "How many days of annual, sick, and casual leave are provided to employees?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5705,
+      5700,
+      5706,
+      5717,
+      5713,
+      5714,
+      5701,
+      5703
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.03225806451612903,
+      0.03149801587301587,
+      0.03125763125763126,
+      0.029857397504456328,
+      0.029857397504456328,
+      0.0293236301369863,
+      0.029211087420042643,
+      0.029083245521601686,
+      0.02877846790890269
+    ],
+    "latency_ms": 19.61
+  },
+  {
+    "case_id": "hr_department_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid_rerank",
+    "question": "How many days of annual, sick, and casual leave are provided to employees?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-004",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5716,
+      5700,
+      5717,
+      5714,
+      5706,
+      5705,
+      5701,
+      5702
+    ],
+    "scores": [
+      3.636639356613159,
+      3.292247772216797,
+      -5.828505516052246,
+      -6.554529666900635,
+      -7.615223407745361,
+      -7.897563934326172,
+      -8.628957748413086,
+      -9.542892456054688,
+      -10.048097610473633,
+      -10.486064910888672
+    ],
+    "latency_ms": 344.6
+  },
+  {
+    "case_id": "hr_department_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "graph",
+    "question": "How many days of annual, sick, and casual leave are provided to employees?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5698,
+      5699,
+      5701,
+      5703,
+      5706,
+      5707,
+      5713,
+      5716,
+      5717
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 36.52
+  },
+  {
+    "case_id": "hr_department_variant_2",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "bm25",
+    "question": "What are the leave approval and attendance requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5705,
+      5716,
+      5700,
+      5706,
+      5717,
+      5702,
+      5703,
+      5704
+    ],
+    "scores": [
+      7.981836993456733,
+      6.790651906530704,
+      3.9689481423662984,
+      3.4504168428667197,
+      3.3892384598090373,
+      3.0542051321811305,
+      2.4757533648953123,
+      2.226447230653473,
+      1.8462753876214233,
+      1.3423527174617615
+    ],
+    "latency_ms": 6.06
+  },
+  {
+    "case_id": "hr_department_variant_2",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "dense",
+    "question": "What are the leave approval and attendance requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-004",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5699,
+      5717,
+      5698,
+      5700,
+      5701,
+      5705,
+      5706,
+      5707,
+      5714,
+      5702
+    ],
+    "scores": [
+      0.6428979635238647,
+      0.6098148095828565,
+      0.544560432434082,
+      0.5343660989781569,
+      0.5330287496430437,
+      0.48045817134033697,
+      0.4176242698654975,
+      0.3600149154663086,
+      0.34869762078552247,
+      0.3391405445081159
+    ],
+    "latency_ms": 14.05
+  },
+  {
+    "case_id": "hr_department_variant_2",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid",
+    "question": "What are the leave approval and attendance requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-004",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5699,
+      5698,
+      5717,
+      5705,
+      5700,
+      5706,
+      5716,
+      5701,
+      5702,
+      5714
+    ],
+    "scores": [
+      0.03252247488101534,
+      0.032266458495966696,
+      0.031054405392392875,
+      0.031024531024531024,
+      0.031009615384615385,
+      0.03007688828584351,
+      0.029709507042253523,
+      0.029273504273504274,
+      0.028991596638655463,
+      0.02819138376017471
+    ],
+    "latency_ms": 19.23
+  },
+  {
+    "case_id": "hr_department_variant_2",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid_rerank",
+    "question": "What are the leave approval and attendance requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-004",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5717,
+      5706,
+      5705,
+      5700,
+      5716,
+      5704,
+      5702,
+      5701
+    ],
+    "scores": [
+      4.138268947601318,
+      3.7311506271362305,
+      -1.541703224182129,
+      -2.125641345977783,
+      -2.2840030193328857,
+      -3.7024459838867188,
+      -8.502365112304688,
+      -8.514425277709961,
+      -10.199403762817383,
+      -10.487464904785156
+    ],
+    "latency_ms": 323.96
+  },
+  {
+    "case_id": "hr_department_variant_2",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "graph",
+    "question": "What are the leave approval and attendance requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5701,
+      5703,
+      5704,
+      5705,
+      5706,
+      5707,
+      5713,
+      5717
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 60.62
+  },
+  {
+    "case_id": "hr_department_variant_2",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "bm25",
+    "question": "What are the leave approval and attendance requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5705,
+      5716,
+      5700,
+      5706,
+      5717,
+      5702,
+      5703,
+      5704
+    ],
+    "scores": [
+      7.981836993456733,
+      6.790651906530704,
+      3.9689481423662984,
+      3.4504168428667197,
+      3.3892384598090373,
+      3.0542051321811305,
+      2.4757533648953123,
+      2.226447230653473,
+      1.8462753876214233,
+      1.3423527174617615
+    ],
+    "latency_ms": 4.94
+  },
+  {
+    "case_id": "hr_department_variant_2",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "dense",
+    "question": "What are the leave approval and attendance requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-004",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5699,
+      5717,
+      5698,
+      5700,
+      5701,
+      5705,
+      5706,
+      5707,
+      5714,
+      5702
+    ],
+    "scores": [
+      0.6428979635238647,
+      0.6098148095828565,
+      0.544560432434082,
+      0.5343660989781569,
+      0.5330287496430437,
+      0.48045817134033697,
+      0.4176242698654975,
+      0.3600149154663086,
+      0.34869762078552247,
+      0.3391405445081159
+    ],
+    "latency_ms": 13.58
+  },
+  {
+    "case_id": "hr_department_variant_2",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid",
+    "question": "What are the leave approval and attendance requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-004",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5699,
+      5698,
+      5717,
+      5705,
+      5700,
+      5706,
+      5716,
+      5701,
+      5702,
+      5714
+    ],
+    "scores": [
+      0.03252247488101534,
+      0.032266458495966696,
+      0.031054405392392875,
+      0.031024531024531024,
+      0.031009615384615385,
+      0.03007688828584351,
+      0.029709507042253523,
+      0.029273504273504274,
+      0.028991596638655463,
+      0.02819138376017471
+    ],
+    "latency_ms": 19.26
+  },
+  {
+    "case_id": "hr_department_variant_2",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid_rerank",
+    "question": "What are the leave approval and attendance requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-004",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5717,
+      5706,
+      5705,
+      5700,
+      5716,
+      5704,
+      5702,
+      5701
+    ],
+    "scores": [
+      4.138268947601318,
+      3.7311506271362305,
+      -1.541703224182129,
+      -2.125641345977783,
+      -2.2840030193328857,
+      -3.7024459838867188,
+      -8.502365112304688,
+      -8.514425277709961,
+      -10.199403762817383,
+      -10.487464904785156
+    ],
+    "latency_ms": 321.42
+  },
+  {
+    "case_id": "hr_department_variant_2",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "graph",
+    "question": "What are the leave approval and attendance requirements?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "HR-001"
+    ],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5701,
+      5703,
+      5704,
+      5705,
+      5706,
+      5707,
+      5713,
+      5717
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 61.25
+  },
+  {
+    "case_id": "engineering_team_variant_1",
+    "trial": 1,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "bm25",
+    "question": "What standards govern communication between backend microservices?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 8,
+    "chunk_ids": [
+      5718,
+      5720,
+      5722,
+      5723,
+      5707,
+      5719,
+      5703,
+      5721
+    ],
+    "scores": [
+      8.017373130357145,
+      3.4900148529591024,
+      3.1117660590195473,
+      1.718608441860723,
+      1.4457764368434847,
+      1.2094633756568085,
+      1.0172193164235304,
+      0.8433219105292032
+    ],
+    "latency_ms": 4.88
+  },
+  {
+    "case_id": "engineering_team_variant_1",
+    "trial": 1,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "dense",
+    "question": "What standards govern communication between backend microservices?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5718,
+      5722,
+      5719,
+      5721,
+      5720,
+      5704,
+      5703,
+      5705,
+      5707,
+      5706
+    ],
+    "scores": [
+      0.7422217726707458,
+      0.5470671327670147,
+      0.4713841097721996,
+      0.39284196496009827,
+      0.3270864589758844,
+      0.3088778349422765,
+      0.26453839155802816,
+      0.25521798400771756,
+      0.23901374638080597,
+      0.22536018637656097
+    ],
+    "latency_ms": 15.7
+  },
+  {
+    "case_id": "engineering_team_variant_1",
+    "trial": 1,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "hybrid",
+    "question": "What standards govern communication between backend microservices?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5718,
+      5722,
+      5720,
+      5719,
+      5721,
+      5707,
+      5703,
+      5723,
+      5704,
+      5705
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.03200204813108039,
+      0.0315136476426799,
+      0.031024531024531024,
+      0.030330882352941176,
+      0.029877369007803793,
+      0.029850746268656716,
+      0.029709507042253523,
+      0.015151515151515152,
+      0.014705882352941176
+    ],
+    "latency_ms": 19.29
+  },
+  {
+    "case_id": "engineering_team_variant_1",
+    "trial": 1,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "hybrid_rerank",
+    "question": "What standards govern communication between backend microservices?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5718,
+      5722,
+      5723,
+      5720,
+      5721,
+      5704,
+      5719,
+      5707,
+      5705,
+      5703
+    ],
+    "scores": [
+      6.366424560546875,
+      0.19803978502750397,
+      -6.812578201293945,
+      -8.513068199157715,
+      -8.567049026489258,
+      -10.107284545898438,
+      -10.503623962402344,
+      -10.718463897705078,
+      -10.964879989624023,
+      -10.972265243530273
+    ],
+    "latency_ms": 253.21
+  },
+  {
+    "case_id": "engineering_team_variant_1",
+    "trial": 1,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "graph",
+    "question": "What standards govern communication between backend microservices?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.6309297535714575,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "HR-002",
+      "ENG-003"
+    ],
+    "result_count": 7,
+    "chunk_ids": [
+      5703,
+      5707,
+      5718,
+      5720,
+      5721,
+      5722,
+      5723
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 22.8
+  },
+  {
+    "case_id": "engineering_team_variant_1",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "bm25",
+    "question": "What standards govern communication between backend microservices?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 8,
+    "chunk_ids": [
+      5718,
+      5720,
+      5722,
+      5723,
+      5707,
+      5719,
+      5703,
+      5721
+    ],
+    "scores": [
+      8.017373130357145,
+      3.4900148529591024,
+      3.1117660590195473,
+      1.718608441860723,
+      1.4457764368434847,
+      1.2094633756568085,
+      1.0172193164235304,
+      0.8433219105292032
+    ],
+    "latency_ms": 4.68
+  },
+  {
+    "case_id": "engineering_team_variant_1",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "dense",
+    "question": "What standards govern communication between backend microservices?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5718,
+      5722,
+      5719,
+      5721,
+      5720,
+      5704,
+      5703,
+      5705,
+      5707,
+      5706
+    ],
+    "scores": [
+      0.7422217726707458,
+      0.5470671327670147,
+      0.4713841097721996,
+      0.39284196496009827,
+      0.3270864589758844,
+      0.3088778349422765,
+      0.26453839155802816,
+      0.25521798400771756,
+      0.23901374638080597,
+      0.22536018637656097
+    ],
+    "latency_ms": 14.54
+  },
+  {
+    "case_id": "engineering_team_variant_1",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "hybrid",
+    "question": "What standards govern communication between backend microservices?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5718,
+      5722,
+      5720,
+      5719,
+      5721,
+      5707,
+      5703,
+      5723,
+      5704,
+      5705
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.03200204813108039,
+      0.0315136476426799,
+      0.031024531024531024,
+      0.030330882352941176,
+      0.029877369007803793,
+      0.029850746268656716,
+      0.029709507042253523,
+      0.015151515151515152,
+      0.014705882352941176
+    ],
+    "latency_ms": 18.83
+  },
+  {
+    "case_id": "engineering_team_variant_1",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "hybrid_rerank",
+    "question": "What standards govern communication between backend microservices?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5718,
+      5722,
+      5723,
+      5720,
+      5721,
+      5704,
+      5719,
+      5707,
+      5705,
+      5703
+    ],
+    "scores": [
+      6.366424560546875,
+      0.19803978502750397,
+      -6.812578201293945,
+      -8.513068199157715,
+      -8.567049026489258,
+      -10.107284545898438,
+      -10.503623962402344,
+      -10.718463897705078,
+      -10.964879989624023,
+      -10.972265243530273
+    ],
+    "latency_ms": 240.15
+  },
+  {
+    "case_id": "engineering_team_variant_1",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "graph",
+    "question": "What standards govern communication between backend microservices?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.6309297535714575,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "HR-002",
+      "ENG-003"
+    ],
+    "result_count": 7,
+    "chunk_ids": [
+      5703,
+      5707,
+      5718,
+      5720,
+      5721,
+      5722,
+      5723
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 21.37
+  },
+  {
+    "case_id": "engineering_team_variant_2",
+    "trial": 1,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "bm25",
+    "question": "Which integration practices are required for engineering services?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5718,
+      5703,
+      5722,
+      5706,
+      5705,
+      5719,
+      5721,
+      5723,
+      5720
+    ],
+    "scores": [
+      4.533978176380007,
+      4.243552890192095,
+      4.144720314599379,
+      3.1995584368445744,
+      2.874347334597319,
+      2.481375684053697,
+      1.455279617365473,
+      1.366993366967364,
+      1.2898085148320881
+    ],
+    "latency_ms": 4.4
+  },
+  {
+    "case_id": "engineering_team_variant_2",
+    "trial": 1,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "dense",
+    "question": "Which integration practices are required for engineering services?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5722,
+      5704,
+      5718,
+      5719,
+      5706,
+      5703,
+      5721,
+      5723,
+      5705,
+      5707
+    ],
+    "scores": [
+      0.5465790899646834,
+      0.4894716885528474,
+      0.4736711382865906,
+      0.3198388028240924,
+      0.3037729380266112,
+      0.3025391517556224,
+      0.2855006456375122,
+      0.24391616880893707,
+      0.21775873197563134,
+      0.18620502948760986
+    ],
+    "latency_ms": 13.93
+  },
+  {
+    "case_id": "engineering_team_variant_2",
+    "trial": 1,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "hybrid",
+    "question": "Which integration practices are required for engineering services?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5718,
+      5722,
+      5703,
+      5706,
+      5719,
+      5705,
+      5721,
+      5723,
+      5720,
+      5704
+    ],
+    "scores": [
+      0.032266458495966696,
+      0.032266458495966696,
+      0.03128054740957967,
+      0.031009615384615385,
+      0.030776515151515152,
+      0.029877369007803793,
+      0.029850746268656716,
+      0.029411764705882353,
+      0.028577260665441927,
+      0.016129032258064516
+    ],
+    "latency_ms": 18.44
+  },
+  {
+    "case_id": "engineering_team_variant_2",
+    "trial": 1,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "hybrid_rerank",
+    "question": "Which integration practices are required for engineering services?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5722,
+      5718,
+      5704,
+      5719,
+      5723,
+      5703,
+      5705,
+      5721,
+      5720,
+      5706
+    ],
+    "scores": [
+      -0.634495735168457,
+      -2.5425772666931152,
+      -7.629450798034668,
+      -8.783775329589844,
+      -9.570775985717773,
+      -10.066261291503906,
+      -10.554790496826172,
+      -11.143645286560059,
+      -11.180883407592773,
+      -11.222888946533203
+    ],
+    "latency_ms": 234.54
+  },
+  {
+    "case_id": "engineering_team_variant_2",
+    "trial": 1,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "graph",
+    "question": "Which integration practices are required for engineering services?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.6309297535714575,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "HR-002",
+      "ENG-003"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5705,
+      5706,
+      5718,
+      5722,
+      5723
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 37.73
+  },
+  {
+    "case_id": "engineering_team_variant_2",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "bm25",
+    "question": "Which integration practices are required for engineering services?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5718,
+      5703,
+      5722,
+      5706,
+      5705,
+      5719,
+      5721,
+      5723,
+      5720
+    ],
+    "scores": [
+      4.533978176380007,
+      4.243552890192095,
+      4.144720314599379,
+      3.1995584368445744,
+      2.874347334597319,
+      2.481375684053697,
+      1.455279617365473,
+      1.366993366967364,
+      1.2898085148320881
+    ],
+    "latency_ms": 4.56
+  },
+  {
+    "case_id": "engineering_team_variant_2",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "dense",
+    "question": "Which integration practices are required for engineering services?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5722,
+      5704,
+      5718,
+      5719,
+      5706,
+      5703,
+      5721,
+      5723,
+      5705,
+      5707
+    ],
+    "scores": [
+      0.5465790899646834,
+      0.4894716885528474,
+      0.4736711382865906,
+      0.3198388028240924,
+      0.3037729380266112,
+      0.3025391517556224,
+      0.2855006456375122,
+      0.24391616880893707,
+      0.21775873197563134,
+      0.18620502948760986
+    ],
+    "latency_ms": 12.81
+  },
+  {
+    "case_id": "engineering_team_variant_2",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "hybrid",
+    "question": "Which integration practices are required for engineering services?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5718,
+      5722,
+      5703,
+      5706,
+      5719,
+      5705,
+      5721,
+      5723,
+      5720,
+      5704
+    ],
+    "scores": [
+      0.032266458495966696,
+      0.032266458495966696,
+      0.03128054740957967,
+      0.031009615384615385,
+      0.030776515151515152,
+      0.029877369007803793,
+      0.029850746268656716,
+      0.029411764705882353,
+      0.028577260665441927,
+      0.016129032258064516
+    ],
+    "latency_ms": 17.73
+  },
+  {
+    "case_id": "engineering_team_variant_2",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "hybrid_rerank",
+    "question": "Which integration practices are required for engineering services?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "ENG-003",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5722,
+      5718,
+      5704,
+      5719,
+      5723,
+      5703,
+      5705,
+      5721,
+      5720,
+      5706
+    ],
+    "scores": [
+      -0.634495735168457,
+      -2.5425772666931152,
+      -7.629450798034668,
+      -8.783775329589844,
+      -9.570775985717773,
+      -10.066261291503906,
+      -10.554790496826172,
+      -11.143645286560059,
+      -11.180883407592773,
+      -11.222888946533203
+    ],
+    "latency_ms": 260.8
+  },
+  {
+    "case_id": "engineering_team_variant_2",
+    "trial": 2,
+    "user": "Priya Nair",
+    "user_id": "USR-00005",
+    "mode": "graph",
+    "question": "Which integration practices are required for engineering services?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.6309297535714575,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "ENG-003"
+    ],
+    "returned_sources": [
+      "HR-002",
+      "ENG-003"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5705,
+      5706,
+      5718,
+      5722,
+      5723
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 47.03
+  },
+  {
+    "case_id": "multi_department_overlap_variant_1",
+    "trial": 1,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "bm25",
+    "question": "How are employee reimbursements and vendor approvals handled?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 0.8529278650606567,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "OPS-001",
+      "HR-002",
+      "FIN-002",
+      "OPS-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5763,
+      5736,
+      5703,
+      5706,
+      5735,
+      5769,
+      5768,
+      5733,
+      5732
+    ],
+    "scores": [
+      4.803694095353374,
+      3.8816819541882164,
+      2.8858923005693913,
+      2.469262878642779,
+      2.4511237492859195,
+      2.3170202700795586,
+      2.0398792911600507,
+      1.7542410482236916,
+      1.5898380253435014,
+      1.5770789746497245
+    ],
+    "latency_ms": 7.42
+  },
+  {
+    "case_id": "multi_department_overlap_variant_1",
+    "trial": 1,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "dense",
+    "question": "How are employee reimbursements and vendor approvals handled?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "FIN-002",
+      "OPS-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5738,
+      5732,
+      5769,
+      5733,
+      5735,
+      5736,
+      5768,
+      5734,
+      5737
+    ],
+    "scores": [
+      0.5661592146063329,
+      0.5516016154526711,
+      0.5063425589187347,
+      0.5050707453404969,
+      0.4939629144712788,
+      0.4669880588657829,
+      0.4575149765592841,
+      0.4514384327604255,
+      0.4362684824306685,
+      0.4258996590435715
+    ],
+    "latency_ms": 17.67
+  },
+  {
+    "case_id": "multi_department_overlap_variant_1",
+    "trial": 1,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "hybrid",
+    "question": "How are employee reimbursements and vendor approvals handled?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "OPS-002",
+      "FIN-002",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5736,
+      5769,
+      5735,
+      5732,
+      5733,
+      5738,
+      5706,
+      5768,
+      5703
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.030798389007344232,
+      0.03055037313432836,
+      0.030303030303030304,
+      0.030158730158730156,
+      0.029877369007803793,
+      0.02964254577157803,
+      0.02946912242686891,
+      0.029411764705882353,
+      0.028782894736842105
+    ],
+    "latency_ms": 21.34
+  },
+  {
+    "case_id": "multi_department_overlap_variant_1",
+    "trial": 1,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "hybrid_rerank",
+    "question": "How are employee reimbursements and vendor approvals handled?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "FIN-002",
+      "OPS-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5732,
+      5734,
+      5733,
+      5735,
+      5768,
+      5738,
+      5769,
+      5736,
+      5766
+    ],
+    "scores": [
+      3.0500316619873047,
+      0.5974286198616028,
+      0.10609406977891922,
+      -0.11959533393383026,
+      -0.16965529322624207,
+      -1.4727327823638916,
+      -1.610008955001831,
+      -1.8030874729156494,
+      -2.906003952026367,
+      -3.8634071350097656
+    ],
+    "latency_ms": 524.6
+  },
+  {
+    "case_id": "multi_department_overlap_variant_1",
+    "trial": 1,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "graph",
+    "question": "How are employee reimbursements and vendor approvals handled?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.5307212739772434,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003"
+    ],
+    "returned_sources": [
+      "HR-002",
+      "FIN-002",
+      "FIN-003"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5703,
+      5704,
+      5706,
+      5707,
+      5732,
+      5733,
+      5735,
+      5737,
+      5738,
+      5739
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 44.88
+  },
+  {
+    "case_id": "multi_department_overlap_variant_1",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "bm25",
+    "question": "How are employee reimbursements and vendor approvals handled?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 0.8529278650606567,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "OPS-001",
+      "HR-002",
+      "FIN-002",
+      "OPS-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5763,
+      5736,
+      5703,
+      5706,
+      5735,
+      5769,
+      5768,
+      5733,
+      5732
+    ],
+    "scores": [
+      4.803694095353374,
+      3.8816819541882164,
+      2.8858923005693913,
+      2.469262878642779,
+      2.4511237492859195,
+      2.3170202700795586,
+      2.0398792911600507,
+      1.7542410482236916,
+      1.5898380253435014,
+      1.5770789746497245
+    ],
+    "latency_ms": 7.51
+  },
+  {
+    "case_id": "multi_department_overlap_variant_1",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "dense",
+    "question": "How are employee reimbursements and vendor approvals handled?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "FIN-002",
+      "OPS-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5738,
+      5732,
+      5769,
+      5733,
+      5735,
+      5736,
+      5768,
+      5734,
+      5737
+    ],
+    "scores": [
+      0.5661592146063329,
+      0.5516016154526711,
+      0.5063425589187347,
+      0.5050707453404969,
+      0.4939629144712788,
+      0.4669880588657829,
+      0.4575149765592841,
+      0.4514384327604255,
+      0.4362684824306685,
+      0.4258996590435715
+    ],
+    "latency_ms": 15.87
+  },
+  {
+    "case_id": "multi_department_overlap_variant_1",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "hybrid",
+    "question": "How are employee reimbursements and vendor approvals handled?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "OPS-002",
+      "FIN-002",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5736,
+      5769,
+      5735,
+      5732,
+      5733,
+      5738,
+      5706,
+      5768,
+      5703
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.030798389007344232,
+      0.03055037313432836,
+      0.030303030303030304,
+      0.030158730158730156,
+      0.029877369007803793,
+      0.02964254577157803,
+      0.02946912242686891,
+      0.029411764705882353,
+      0.028782894736842105
+    ],
+    "latency_ms": 21.17
+  },
+  {
+    "case_id": "multi_department_overlap_variant_1",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "hybrid_rerank",
+    "question": "How are employee reimbursements and vendor approvals handled?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "FIN-002",
+      "OPS-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5732,
+      5734,
+      5733,
+      5735,
+      5768,
+      5738,
+      5769,
+      5736,
+      5766
+    ],
+    "scores": [
+      3.0500316619873047,
+      0.5974286198616028,
+      0.10609406977891922,
+      -0.11959533393383026,
+      -0.16965529322624207,
+      -1.4727327823638916,
+      -1.610008955001831,
+      -1.8030874729156494,
+      -2.906003952026367,
+      -3.8634071350097656
+    ],
+    "latency_ms": 492.55
+  },
+  {
+    "case_id": "multi_department_overlap_variant_1",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "graph",
+    "question": "How are employee reimbursements and vendor approvals handled?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.5307212739772434,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003"
+    ],
+    "returned_sources": [
+      "HR-002",
+      "FIN-002",
+      "FIN-003"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5703,
+      5704,
+      5706,
+      5707,
+      5732,
+      5733,
+      5735,
+      5737,
+      5738,
+      5739
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 45.76
+  },
+  {
+    "case_id": "multi_department_overlap_variant_2",
+    "trial": 1,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "bm25",
+    "question": "What rules apply to expense claims and vendor management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002",
+      "OPS-001"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5732,
+      5734,
+      5733,
+      5739,
+      5768,
+      5766,
+      5769,
+      5736,
+      5763,
+      5735
+    ],
+    "scores": [
+      6.323324088104436,
+      5.502019834422011,
+      4.542860860009923,
+      4.419738087791557,
+      3.2659241857505537,
+      3.2377020521054263,
+      3.1180832909199685,
+      3.11432016059192,
+      3.010094855828284,
+      1.9233852750990823
+    ],
+    "latency_ms": 6.8
+  },
+  {
+    "case_id": "multi_department_overlap_variant_2",
+    "trial": 1,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "dense",
+    "question": "What rules apply to expense claims and vendor management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "OPS-002",
+      "FIN-003",
+      "FIN-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5768,
+      5739,
+      5733,
+      5769,
+      5732,
+      5738,
+      5737,
+      5734,
+      5767,
+      5766
+    ],
+    "scores": [
+      0.5929207095002282,
+      0.5922802333664765,
+      0.5305015408394884,
+      0.5285006131529077,
+      0.5228551883360416,
+      0.515704243439184,
+      0.4933456484469394,
+      0.47228765652849414,
+      0.4698092061394934,
+      0.46582648361763535
+    ],
+    "latency_ms": 14.34
+  },
+  {
+    "case_id": "multi_department_overlap_variant_2",
+    "trial": 1,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "hybrid",
+    "question": "What rules apply to expense claims and vendor management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-002",
+      "OPS-002",
+      "FIN-003"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5732,
+      5768,
+      5739,
+      5733,
+      5734,
+      5769,
+      5766,
+      5737,
+      5736,
+      5738
+    ],
+    "scores": [
+      0.03177805800756621,
+      0.03177805800756621,
+      0.031754032258064516,
+      0.031746031746031744,
+      0.030834914611005692,
+      0.03055037313432836,
+      0.029437229437229435,
+      0.028814262023217248,
+      0.028790389395194696,
+      0.028665028665028666
+    ],
+    "latency_ms": 20.03
+  },
+  {
+    "case_id": "multi_department_overlap_variant_2",
+    "trial": 1,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "hybrid_rerank",
+    "question": "What rules apply to expense claims and vendor management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "OPS-002",
+      "FIN-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5769,
+      5768,
+      5734,
+      5733,
+      5732,
+      5766,
+      5767,
+      5738,
+      5737
+    ],
+    "scores": [
+      -0.019356772303581238,
+      -1.077878713607788,
+      -1.1333434581756592,
+      -2.1947953701019287,
+      -2.388580083847046,
+      -4.46843957901001,
+      -4.848382949829102,
+      -5.180219650268555,
+      -5.595076560974121,
+      -6.472264766693115
+    ],
+    "latency_ms": 468.17
+  },
+  {
+    "case_id": "multi_department_overlap_variant_2",
+    "trial": 1,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "graph",
+    "question": "What rules apply to expense claims and vendor management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.49818925746641285,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003"
+    ],
+    "returned_sources": [
+      "HR-002",
+      "FIN-002",
+      "OPS-001",
+      "FIN-003"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5703,
+      5704,
+      5707,
+      5732,
+      5734,
+      5735,
+      5763,
+      5737,
+      5738,
+      5739
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 36.28
+  },
+  {
+    "case_id": "multi_department_overlap_variant_2",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "bm25",
+    "question": "What rules apply to expense claims and vendor management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002",
+      "OPS-001"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5732,
+      5734,
+      5733,
+      5739,
+      5768,
+      5766,
+      5769,
+      5736,
+      5763,
+      5735
+    ],
+    "scores": [
+      6.323324088104436,
+      5.502019834422011,
+      4.542860860009923,
+      4.419738087791557,
+      3.2659241857505537,
+      3.2377020521054263,
+      3.1180832909199685,
+      3.11432016059192,
+      3.010094855828284,
+      1.9233852750990823
+    ],
+    "latency_ms": 6.4
+  },
+  {
+    "case_id": "multi_department_overlap_variant_2",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "dense",
+    "question": "What rules apply to expense claims and vendor management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "OPS-002",
+      "FIN-003",
+      "FIN-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5768,
+      5739,
+      5733,
+      5769,
+      5732,
+      5738,
+      5737,
+      5734,
+      5767,
+      5766
+    ],
+    "scores": [
+      0.5929207095002282,
+      0.5922802333664765,
+      0.5305015408394884,
+      0.5285006131529077,
+      0.5228551883360416,
+      0.515704243439184,
+      0.4933456484469394,
+      0.47228765652849414,
+      0.4698092061394934,
+      0.46582648361763535
+    ],
+    "latency_ms": 17.08
+  },
+  {
+    "case_id": "multi_department_overlap_variant_2",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "hybrid",
+    "question": "What rules apply to expense claims and vendor management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-002",
+      "OPS-002",
+      "FIN-003"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5732,
+      5768,
+      5739,
+      5733,
+      5734,
+      5769,
+      5766,
+      5737,
+      5736,
+      5738
+    ],
+    "scores": [
+      0.03177805800756621,
+      0.03177805800756621,
+      0.031754032258064516,
+      0.031746031746031744,
+      0.030834914611005692,
+      0.03055037313432836,
+      0.029437229437229435,
+      0.028814262023217248,
+      0.028790389395194696,
+      0.028665028665028666
+    ],
+    "latency_ms": 23.38
+  },
+  {
+    "case_id": "multi_department_overlap_variant_2",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "hybrid_rerank",
+    "question": "What rules apply to expense claims and vendor management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003",
+      "OPS-002"
+    ],
+    "returned_sources": [
+      "FIN-003",
+      "OPS-002",
+      "FIN-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5739,
+      5769,
+      5768,
+      5734,
+      5733,
+      5732,
+      5766,
+      5767,
+      5738,
+      5737
+    ],
+    "scores": [
+      -0.019356772303581238,
+      -1.077878713607788,
+      -1.1333434581756592,
+      -2.1947953701019287,
+      -2.388580083847046,
+      -4.46843957901001,
+      -4.848382949829102,
+      -5.180219650268555,
+      -5.595076560974121,
+      -6.472264766693115
+    ],
+    "latency_ms": 471.69
+  },
+  {
+    "case_id": "multi_department_overlap_variant_2",
+    "trial": 2,
+    "user": "Grace Wilson",
+    "user_id": "USR-00009",
+    "mode": "graph",
+    "question": "What rules apply to expense claims and vendor management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.49818925746641285,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-002",
+      "FIN-003"
+    ],
+    "returned_sources": [
+      "HR-002",
+      "FIN-002",
+      "OPS-001",
+      "FIN-003"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5703,
+      5704,
+      5707,
+      5732,
+      5734,
+      5735,
+      5763,
+      5737,
+      5738,
+      5739
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 38.99
+  },
+  {
+    "case_id": "restricted_allowed_variant_1",
+    "trial": 1,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "bm25",
+    "question": "What does the annual budget allocation report say about departments?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 8,
+    "chunk_ids": [
+      5740,
+      5743,
+      5742,
+      5741,
+      5706,
+      5705,
+      5703,
+      5704
+    ],
+    "scores": [
+      7.334038772458771,
+      6.464276385196626,
+      4.111822803707546,
+      2.5643120680002047,
+      2.1861332837464422,
+      1.8922072456417653,
+      1.0655745916248407,
+      0.7983967143767221
+    ],
+    "latency_ms": 4.41
+  },
+  {
+    "case_id": "restricted_allowed_variant_1",
+    "trial": 1,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "dense",
+    "question": "What does the annual budget allocation report say about departments?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5740,
+      5743,
+      5742,
+      5741,
+      5706,
+      5703,
+      5707,
+      5705,
+      5704
+    ],
+    "scores": [
+      0.6200696086800609,
+      0.48824033351415475,
+      0.4872289918847703,
+      0.33534975822571056,
+      0.2555387159218705,
+      0.2548310897056305,
+      0.2438076145878315,
+      0.18459792114533435,
+      0.1594924784160443
+    ],
+    "latency_ms": 15.49
+  },
+  {
+    "case_id": "restricted_allowed_variant_1",
+    "trial": 1,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "hybrid",
+    "question": "What does the annual budget allocation report say about departments?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5740,
+      5743,
+      5742,
+      5741,
+      5706,
+      5703,
+      5705,
+      5704,
+      5707
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.03225806451612903,
+      0.031746031746031744,
+      0.03125,
+      0.03076923076923077,
+      0.03007688828584351,
+      0.029857397504456328,
+      0.02919863597612958,
+      0.014925373134328358
+    ],
+    "latency_ms": 18.9
+  },
+  {
+    "case_id": "restricted_allowed_variant_1",
+    "trial": 1,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "hybrid_rerank",
+    "question": "What does the annual budget allocation report say about departments?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5740,
+      5743,
+      5742,
+      5741,
+      5706,
+      5703,
+      5705,
+      5704,
+      5707
+    ],
+    "scores": [
+      5.2487473487854,
+      1.1120123863220215,
+      -1.8258841037750244,
+      -5.818026065826416,
+      -10.901381492614746,
+      -10.951698303222656,
+      -11.04648208618164,
+      -11.223796844482422,
+      -11.465492248535156
+    ],
+    "latency_ms": 215.27
+  },
+  {
+    "case_id": "restricted_allowed_variant_1",
+    "trial": 1,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "graph",
+    "question": "What does the annual budget allocation report say about departments?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 6,
+    "chunk_ids": [
+      5742,
+      5743,
+      5705,
+      5707,
+      5740,
+      5741
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 47.06
+  },
+  {
+    "case_id": "restricted_allowed_variant_1",
+    "trial": 2,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "bm25",
+    "question": "What does the annual budget allocation report say about departments?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 8,
+    "chunk_ids": [
+      5740,
+      5743,
+      5742,
+      5741,
+      5706,
+      5705,
+      5703,
+      5704
+    ],
+    "scores": [
+      7.334038772458771,
+      6.464276385196626,
+      4.111822803707546,
+      2.5643120680002047,
+      2.1861332837464422,
+      1.8922072456417653,
+      1.0655745916248407,
+      0.7983967143767221
+    ],
+    "latency_ms": 4.52
+  },
+  {
+    "case_id": "restricted_allowed_variant_1",
+    "trial": 2,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "dense",
+    "question": "What does the annual budget allocation report say about departments?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5740,
+      5743,
+      5742,
+      5741,
+      5706,
+      5703,
+      5707,
+      5705,
+      5704
+    ],
+    "scores": [
+      0.6200696086800609,
+      0.48824033351415475,
+      0.4872289918847703,
+      0.33534975822571056,
+      0.2555387159218705,
+      0.2548310897056305,
+      0.2438076145878315,
+      0.18459792114533435,
+      0.1594924784160443
+    ],
+    "latency_ms": 13.34
+  },
+  {
+    "case_id": "restricted_allowed_variant_1",
+    "trial": 2,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "hybrid",
+    "question": "What does the annual budget allocation report say about departments?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5740,
+      5743,
+      5742,
+      5741,
+      5706,
+      5703,
+      5705,
+      5704,
+      5707
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.03225806451612903,
+      0.031746031746031744,
+      0.03125,
+      0.03076923076923077,
+      0.03007688828584351,
+      0.029857397504456328,
+      0.02919863597612958,
+      0.014925373134328358
+    ],
+    "latency_ms": 19.12
+  },
+  {
+    "case_id": "restricted_allowed_variant_1",
+    "trial": 2,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "hybrid_rerank",
+    "question": "What does the annual budget allocation report say about departments?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 9,
+    "chunk_ids": [
+      5740,
+      5743,
+      5742,
+      5741,
+      5706,
+      5703,
+      5705,
+      5704,
+      5707
+    ],
+    "scores": [
+      5.2487473487854,
+      1.1120123863220215,
+      -1.8258841037750244,
+      -5.818026065826416,
+      -10.901381492614746,
+      -10.951698303222656,
+      -11.04648208618164,
+      -11.223796844482422,
+      -11.465492248535156
+    ],
+    "latency_ms": 199.9
+  },
+  {
+    "case_id": "restricted_allowed_variant_1",
+    "trial": 2,
+    "user": "Sofia Chen",
+    "user_id": "USR-00007",
+    "mode": "graph",
+    "question": "What does the annual budget allocation report say about departments?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "FIN-004"
+    ],
+    "returned_sources": [
+      "FIN-004",
+      "HR-002"
+    ],
+    "result_count": 6,
+    "chunk_ids": [
+      5742,
+      5743,
+      5705,
+      5707,
+      5740,
+      5741
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 44.08
+  },
+  {
+    "case_id": "restricted_denied_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "bm25",
+    "question": "Summarize the restricted annual budget document.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-001",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5698,
+      5706,
+      5713,
+      5704,
+      5699,
+      5703,
+      5705,
+      5702,
+      5707
+    ],
+    "scores": [
+      4.815493144515642,
+      3.740215557418728,
+      2.7277628937706155,
+      2.570676545309691,
+      2.418733820683831,
+      1.896546182219435,
+      1.4052829678924728,
+      1.1026394904851886,
+      1.0302327507881233,
+      0.9271999356338337
+    ],
+    "latency_ms": 5.38
+  },
+  {
+    "case_id": "restricted_denied_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "dense",
+    "question": "Summarize the restricted annual budget document.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-001",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5701,
+      5700,
+      5702,
+      5706,
+      5705,
+      5698,
+      5707,
+      5699,
+      5716
+    ],
+    "scores": [
+      0.3310703043215928,
+      0.3300406241368503,
+      0.3249141186578133,
+      0.32230602734369085,
+      0.31466873709336074,
+      0.3124322518787084,
+      0.30131683937806897,
+      0.2905556684401238,
+      0.2587181175519162,
+      0.244848907607924
+    ],
+    "latency_ms": 12.8
+  },
+  {
+    "case_id": "restricted_denied_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid",
+    "question": "Summarize the restricted annual budget document.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-002",
+      "HR-001"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5706,
+      5698,
+      5702,
+      5705,
+      5699,
+      5700,
+      5713,
+      5707,
+      5703
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.03125763125763126,
+      0.031054405392392875,
+      0.030117753623188408,
+      0.029857397504456328,
+      0.02964426877470356,
+      0.029571646010002173,
+      0.0293236301369863,
+      0.028991596638655463,
+      0.028814262023217248
+    ],
+    "latency_ms": 19.74
+  },
+  {
+    "case_id": "restricted_denied_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid_rerank",
+    "question": "Summarize the restricted annual budget document.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-002",
+      "HR-001"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5706,
+      5699,
+      5698,
+      5716,
+      5713,
+      5700,
+      5702,
+      5705,
+      5701
+    ],
+    "scores": [
+      -5.854669570922852,
+      -8.73654556274414,
+      -9.639122009277344,
+      -10.05389404296875,
+      -10.62411880493164,
+      -10.659078598022461,
+      -10.791707038879395,
+      -10.912114143371582,
+      -11.027360916137695,
+      -11.061651229858398
+    ],
+    "latency_ms": 323.56
+  },
+  {
+    "case_id": "restricted_denied_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "graph",
+    "question": "Summarize the restricted annual budget document.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5701,
+      5702,
+      5703,
+      5705,
+      5706,
+      5707,
+      5713,
+      5717
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 53.55
+  },
+  {
+    "case_id": "restricted_denied_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "bm25",
+    "question": "Summarize the restricted annual budget document.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-001",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5698,
+      5706,
+      5713,
+      5704,
+      5699,
+      5703,
+      5705,
+      5702,
+      5707
+    ],
+    "scores": [
+      4.815493144515642,
+      3.740215557418728,
+      2.7277628937706155,
+      2.570676545309691,
+      2.418733820683831,
+      1.896546182219435,
+      1.4052829678924728,
+      1.1026394904851886,
+      1.0302327507881233,
+      0.9271999356338337
+    ],
+    "latency_ms": 5.4
+  },
+  {
+    "case_id": "restricted_denied_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "dense",
+    "question": "Summarize the restricted annual budget document.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-001",
+      "HR-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5701,
+      5700,
+      5702,
+      5706,
+      5705,
+      5698,
+      5707,
+      5699,
+      5716
+    ],
+    "scores": [
+      0.3310703043215928,
+      0.3300406241368503,
+      0.3249141186578133,
+      0.32230602734369085,
+      0.31466873709336074,
+      0.3124322518787084,
+      0.30131683937806897,
+      0.2905556684401238,
+      0.2587181175519162,
+      0.244848907607924
+    ],
+    "latency_ms": 12.98
+  },
+  {
+    "case_id": "restricted_denied_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid",
+    "question": "Summarize the restricted annual budget document.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-002",
+      "HR-001"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5706,
+      5698,
+      5702,
+      5705,
+      5699,
+      5700,
+      5713,
+      5707,
+      5703
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.03125763125763126,
+      0.031054405392392875,
+      0.030117753623188408,
+      0.029857397504456328,
+      0.02964426877470356,
+      0.029571646010002173,
+      0.0293236301369863,
+      0.028991596638655463,
+      0.028814262023217248
+    ],
+    "latency_ms": 19.57
+  },
+  {
+    "case_id": "restricted_denied_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid_rerank",
+    "question": "Summarize the restricted annual budget document.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-004",
+      "HR-002",
+      "HR-001"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5717,
+      5706,
+      5699,
+      5698,
+      5716,
+      5713,
+      5700,
+      5702,
+      5705,
+      5701
+    ],
+    "scores": [
+      -5.854669570922852,
+      -8.73654556274414,
+      -9.639122009277344,
+      -10.05389404296875,
+      -10.62411880493164,
+      -10.659078598022461,
+      -10.791707038879395,
+      -10.912114143371582,
+      -11.027360916137695,
+      -11.061651229858398
+    ],
+    "latency_ms": 334.97
+  },
+  {
+    "case_id": "restricted_denied_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "graph",
+    "question": "Summarize the restricted annual budget document.",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5699,
+      5701,
+      5702,
+      5703,
+      5705,
+      5706,
+      5707,
+      5713,
+      5717
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 55.1
+  },
+  {
+    "case_id": "team_denied_variant_1",
+    "trial": 1,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "bm25",
+    "question": "What steps are required to submit an employee expense claim?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5706,
+      5703,
+      5705,
+      5707,
+      5704
+    ],
+    "scores": [
+      2.028568194988094,
+      1.8048346322847717,
+      1.300729184213579,
+      0.8024032084173286,
+      0.38344225986245734
+    ],
+    "latency_ms": 3.69
+  },
+  {
+    "case_id": "team_denied_variant_1",
+    "trial": 1,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "dense",
+    "question": "What steps are required to submit an employee expense claim?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5706,
+      5707,
+      5705,
+      5703,
+      5704
+    ],
+    "scores": [
+      0.39445695910114364,
+      0.3313451111316681,
+      0.30876682348449147,
+      0.2677909274225879,
+      0.19466205521410873
+    ],
+    "latency_ms": 13.65
+  },
+  {
+    "case_id": "team_denied_variant_1",
+    "trial": 1,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "hybrid",
+    "question": "What steps are required to submit an employee expense claim?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5706,
+      5703,
+      5707,
+      5705,
+      5704
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.031754032258064516,
+      0.031754032258064516,
+      0.031746031746031744,
+      0.03076923076923077
+    ],
+    "latency_ms": 16.94
+  },
+  {
+    "case_id": "team_denied_variant_1",
+    "trial": 1,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "hybrid_rerank",
+    "question": "What steps are required to submit an employee expense claim?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5706,
+      5705,
+      5704,
+      5707,
+      5703
+    ],
+    "scores": [
+      -8.519365310668945,
+      -8.932926177978516,
+      -10.443597793579102,
+      -11.067438125610352,
+      -11.112741470336914
+    ],
+    "latency_ms": 117.5
+  },
+  {
+    "case_id": "team_denied_variant_1",
+    "trial": 1,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "graph",
+    "question": "What steps are required to submit an employee expense claim?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 2,
+    "chunk_ids": [
+      5703,
+      5706
+    ],
+    "scores": [
+      1.0,
+      1.0
+    ],
+    "latency_ms": 33.66
+  },
+  {
+    "case_id": "team_denied_variant_1",
+    "trial": 2,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "bm25",
+    "question": "What steps are required to submit an employee expense claim?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5706,
+      5703,
+      5705,
+      5707,
+      5704
+    ],
+    "scores": [
+      2.028568194988094,
+      1.8048346322847717,
+      1.300729184213579,
+      0.8024032084173286,
+      0.38344225986245734
+    ],
+    "latency_ms": 3.92
+  },
+  {
+    "case_id": "team_denied_variant_1",
+    "trial": 2,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "dense",
+    "question": "What steps are required to submit an employee expense claim?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5706,
+      5707,
+      5705,
+      5703,
+      5704
+    ],
+    "scores": [
+      0.39445695910114364,
+      0.3313451111316681,
+      0.30876682348449147,
+      0.2677909274225879,
+      0.19466205521410873
+    ],
+    "latency_ms": 12.1
+  },
+  {
+    "case_id": "team_denied_variant_1",
+    "trial": 2,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "hybrid",
+    "question": "What steps are required to submit an employee expense claim?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5706,
+      5703,
+      5707,
+      5705,
+      5704
+    ],
+    "scores": [
+      0.03278688524590164,
+      0.031754032258064516,
+      0.031754032258064516,
+      0.031746031746031744,
+      0.03076923076923077
+    ],
+    "latency_ms": 16.07
+  },
+  {
+    "case_id": "team_denied_variant_1",
+    "trial": 2,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "hybrid_rerank",
+    "question": "What steps are required to submit an employee expense claim?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 5,
+    "chunk_ids": [
+      5706,
+      5705,
+      5704,
+      5707,
+      5703
+    ],
+    "scores": [
+      -8.519365310668945,
+      -8.932926177978516,
+      -10.443597793579102,
+      -11.067438125610352,
+      -11.112741470336914
+    ],
+    "latency_ms": 122.73
+  },
+  {
+    "case_id": "team_denied_variant_1",
+    "trial": 2,
+    "user": "Omar Haddad",
+    "user_id": "USR-00008",
+    "mode": "graph",
+    "question": "What steps are required to submit an employee expense claim?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002"
+    ],
+    "result_count": 2,
+    "chunk_ids": [
+      5703,
+      5706
+    ],
+    "scores": [
+      1.0,
+      1.0
+    ],
+    "latency_ms": 33.11
+  },
+  {
+    "case_id": "it_department_variant_1",
+    "trial": 1,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "bm25",
+    "question": "What controls are required for enterprise access management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.6309297535714575,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-002",
+      "IT-001",
+      "IT-004",
+      "HR-002",
+      "ENG-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5749,
+      5744,
+      5750,
+      5759,
+      5706,
+      5747,
+      5745,
+      5705,
+      5707,
+      5728
+    ],
+    "scores": [
+      6.4052986487618915,
+      5.973381130846008,
+      5.6620579227107015,
+      4.459247275594018,
+      4.440475326912856,
+      3.434063752900326,
+      3.3371522705023287,
+      3.3298595751915308,
+      3.0794774437143557,
+      2.9958437933680293
+    ],
+    "latency_ms": 7.6
+  },
+  {
+    "case_id": "it_department_variant_1",
+    "trial": 1,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "dense",
+    "question": "What controls are required for enterprise access management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-001",
+      "HR-002",
+      "IT-004",
+      "IT-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5744,
+      5746,
+      5707,
+      5747,
+      5761,
+      5745,
+      5704,
+      5706,
+      5748,
+      5750
+    ],
+    "scores": [
+      0.6424739404069303,
+      0.5958718898372727,
+      0.489968181254377,
+      0.48095733267831897,
+      0.4577198973035934,
+      0.4339911977057943,
+      0.4253075592128186,
+      0.41366196707940495,
+      0.3846108386152489,
+      0.3813676152168015
+    ],
+    "latency_ms": 13.24
+  },
+  {
+    "case_id": "it_department_variant_1",
+    "trial": 1,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "hybrid",
+    "question": "What controls are required for enterprise access management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-001",
+      "HR-002",
+      "IT-002",
+      "IT-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5744,
+      5747,
+      5707,
+      5750,
+      5706,
+      5745,
+      5749,
+      5746,
+      5761,
+      5705
+    ],
+    "scores": [
+      0.03252247488101534,
+      0.030776515151515152,
+      0.03036576949620428,
+      0.030158730158730156,
+      0.030090497737556562,
+      0.03007688828584351,
+      0.02921395544346364,
+      0.029116045245077504,
+      0.029083245521601686,
+      0.028790389395194696
+    ],
+    "latency_ms": 21.82
+  },
+  {
+    "case_id": "it_department_variant_1",
+    "trial": 1,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "hybrid_rerank",
+    "question": "What controls are required for enterprise access management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-001",
+      "HR-002",
+      "IT-003",
+      "IT-004",
+      "IT-002",
+      "ENG-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5744,
+      5707,
+      5756,
+      5761,
+      5750,
+      5747,
+      5731,
+      5749,
+      5745,
+      5746
+    ],
+    "scores": [
+      3.775657892227173,
+      3.457923650741577,
+      2.73649001121521,
+      2.0036065578460693,
+      1.8816807270050049,
+      0.7096289396286011,
+      0.6330267190933228,
+      -2.1288514137268066,
+      -4.408551216125488,
+      -6.621813774108887
+    ],
+    "latency_ms": 435.93
+  },
+  {
+    "case_id": "it_department_variant_1",
+    "trial": 1,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "graph",
+    "question": "What controls are required for enterprise access management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-001",
+      "HR-002",
+      "IT-002",
+      "ENG-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5744,
+      5705,
+      5706,
+      5707,
+      5745,
+      5746,
+      5747,
+      5749,
+      5750,
+      5730
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 41.61
+  },
+  {
+    "case_id": "it_department_variant_1",
+    "trial": 2,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "bm25",
+    "question": "What controls are required for enterprise access management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 0.5,
+    "ndcg_at_10": 0.6309297535714575,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-002",
+      "IT-001",
+      "IT-004",
+      "HR-002",
+      "ENG-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5749,
+      5744,
+      5750,
+      5759,
+      5706,
+      5747,
+      5745,
+      5705,
+      5707,
+      5728
+    ],
+    "scores": [
+      6.4052986487618915,
+      5.973381130846008,
+      5.6620579227107015,
+      4.459247275594018,
+      4.440475326912856,
+      3.434063752900326,
+      3.3371522705023287,
+      3.3298595751915308,
+      3.0794774437143557,
+      2.9958437933680293
+    ],
+    "latency_ms": 7.19
+  },
+  {
+    "case_id": "it_department_variant_1",
+    "trial": 2,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "dense",
+    "question": "What controls are required for enterprise access management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-001",
+      "HR-002",
+      "IT-004",
+      "IT-002"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5744,
+      5746,
+      5707,
+      5747,
+      5761,
+      5745,
+      5704,
+      5706,
+      5748,
+      5750
+    ],
+    "scores": [
+      0.6424739404069303,
+      0.5958718898372727,
+      0.489968181254377,
+      0.48095733267831897,
+      0.4577198973035934,
+      0.4339911977057943,
+      0.4253075592128186,
+      0.41366196707940495,
+      0.3846108386152489,
+      0.3813676152168015
+    ],
+    "latency_ms": 13.43
+  },
+  {
+    "case_id": "it_department_variant_1",
+    "trial": 2,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "hybrid",
+    "question": "What controls are required for enterprise access management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-001",
+      "HR-002",
+      "IT-002",
+      "IT-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5744,
+      5747,
+      5707,
+      5750,
+      5706,
+      5745,
+      5749,
+      5746,
+      5761,
+      5705
+    ],
+    "scores": [
+      0.03252247488101534,
+      0.030776515151515152,
+      0.03036576949620428,
+      0.030158730158730156,
+      0.030090497737556562,
+      0.03007688828584351,
+      0.02921395544346364,
+      0.029116045245077504,
+      0.029083245521601686,
+      0.028790389395194696
+    ],
+    "latency_ms": 23.45
+  },
+  {
+    "case_id": "it_department_variant_1",
+    "trial": 2,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "hybrid_rerank",
+    "question": "What controls are required for enterprise access management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-001",
+      "HR-002",
+      "IT-003",
+      "IT-004",
+      "IT-002",
+      "ENG-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5744,
+      5707,
+      5756,
+      5761,
+      5750,
+      5747,
+      5731,
+      5749,
+      5745,
+      5746
+    ],
+    "scores": [
+      3.775657892227173,
+      3.457923650741577,
+      2.73649001121521,
+      2.0036065578460693,
+      1.8816807270050049,
+      0.7096289396286011,
+      0.6330267190933228,
+      -2.1288514137268066,
+      -4.408551216125488,
+      -6.621813774108887
+    ],
+    "latency_ms": 468.74
+  },
+  {
+    "case_id": "it_department_variant_1",
+    "trial": 2,
+    "user": "Noah Patel",
+    "user_id": "USR-00010",
+    "mode": "graph",
+    "question": "What controls are required for enterprise access management?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": true,
+    "mrr_at_10": 1.0,
+    "ndcg_at_10": 1.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [
+      "IT-001"
+    ],
+    "returned_sources": [
+      "IT-001",
+      "HR-002",
+      "IT-002",
+      "ENG-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5744,
+      5705,
+      5706,
+      5707,
+      5745,
+      5746,
+      5747,
+      5749,
+      5750,
+      5730
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 42.0
+  },
+  {
+    "case_id": "no_relevant_evidence_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "bm25",
+    "question": "What will Meridian's revenue be in the year 2040?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5699,
+      5703,
+      5706,
+      5705,
+      5700,
+      5698,
+      5713,
+      5716,
+      5704,
+      5702
+    ],
+    "scores": [
+      5.358790625395935,
+      4.059518484771066,
+      3.963447051440278,
+      3.3694522927357418,
+      3.2407161724438325,
+      2.9766289397981476,
+      2.8177430390480933,
+      2.123788033622012,
+      1.8293292757882655,
+      1.7392650656365334
+    ],
+    "latency_ms": 5.3
+  },
+  {
+    "case_id": "no_relevant_evidence_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "dense",
+    "question": "What will Meridian's revenue be in the year 2040?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002",
+      "HR-001",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5703,
+      5698,
+      5713,
+      5702,
+      5716,
+      5701,
+      5717,
+      5704,
+      5707,
+      5714
+    ],
+    "scores": [
+      0.33847554463439655,
+      0.33538378266192836,
+      0.32630898638856576,
+      0.29621039938299776,
+      0.15267245141596186,
+      0.12386135770543127,
+      0.12364216173133369,
+      0.1195412391560905,
+      0.11014992832243886,
+      0.08724911440924754
+    ],
+    "latency_ms": 13.04
+  },
+  {
+    "case_id": "no_relevant_evidence_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid",
+    "question": "What will Meridian's revenue be in the year 2040?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002",
+      "HR-001",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5703,
+      5698,
+      5713,
+      5716,
+      5702,
+      5699,
+      5706,
+      5701,
+      5704,
+      5700
+    ],
+    "scores": [
+      0.03252247488101534,
+      0.03128054740957967,
+      0.030798389007344232,
+      0.030090497737556562,
+      0.029910714285714284,
+      0.029906956136464335,
+      0.02976190476190476,
+      0.029236022193768675,
+      0.02919863597612958,
+      0.029083245521601686
+    ],
+    "latency_ms": 18.14
+  },
+  {
+    "case_id": "no_relevant_evidence_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid_rerank",
+    "question": "What will Meridian's revenue be in the year 2040?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5703,
+      5713,
+      5705,
+      5716,
+      5699,
+      5700,
+      5706,
+      5715,
+      5702
+    ],
+    "scores": [
+      -7.9240193367004395,
+      -8.135002136230469,
+      -8.220396041870117,
+      -11.265558242797852,
+      -11.270421981811523,
+      -11.294363021850586,
+      -11.330280303955078,
+      -11.338879585266113,
+      -11.370182991027832,
+      -11.372114181518555
+    ],
+    "latency_ms": 355.36
+  },
+  {
+    "case_id": "no_relevant_evidence_variant_1",
+    "trial": 1,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "graph",
+    "question": "What will Meridian's revenue be in the year 2040?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 6,
+    "chunk_ids": [
+      5698,
+      5699,
+      5703,
+      5705,
+      5707,
+      5713
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 35.2
+  },
+  {
+    "case_id": "no_relevant_evidence_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "bm25",
+    "question": "What will Meridian's revenue be in the year 2040?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5699,
+      5703,
+      5706,
+      5705,
+      5700,
+      5698,
+      5713,
+      5716,
+      5704,
+      5702
+    ],
+    "scores": [
+      5.358790625395935,
+      4.059518484771066,
+      3.963447051440278,
+      3.3694522927357418,
+      3.2407161724438325,
+      2.9766289397981476,
+      2.8177430390480933,
+      2.123788033622012,
+      1.8293292757882655,
+      1.7392650656365334
+    ],
+    "latency_ms": 4.89
+  },
+  {
+    "case_id": "no_relevant_evidence_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "dense",
+    "question": "What will Meridian's revenue be in the year 2040?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002",
+      "HR-001",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5703,
+      5698,
+      5713,
+      5702,
+      5716,
+      5701,
+      5717,
+      5704,
+      5707,
+      5714
+    ],
+    "scores": [
+      0.33847554463439655,
+      0.33538378266192836,
+      0.32630898638856576,
+      0.29621039938299776,
+      0.15267245141596186,
+      0.12386135770543127,
+      0.12364216173133369,
+      0.1195412391560905,
+      0.11014992832243886,
+      0.08724911440924754
+    ],
+    "latency_ms": 13.9
+  },
+  {
+    "case_id": "no_relevant_evidence_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid",
+    "question": "What will Meridian's revenue be in the year 2040?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-002",
+      "HR-001",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5703,
+      5698,
+      5713,
+      5716,
+      5702,
+      5699,
+      5706,
+      5701,
+      5704,
+      5700
+    ],
+    "scores": [
+      0.03252247488101534,
+      0.03128054740957967,
+      0.030798389007344232,
+      0.030090497737556562,
+      0.029910714285714284,
+      0.029906956136464335,
+      0.02976190476190476,
+      0.029236022193768675,
+      0.02919863597612958,
+      0.029083245521601686
+    ],
+    "latency_ms": 18.78
+  },
+  {
+    "case_id": "no_relevant_evidence_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "hybrid_rerank",
+    "question": "What will Meridian's revenue be in the year 2040?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 10,
+    "chunk_ids": [
+      5698,
+      5703,
+      5713,
+      5705,
+      5716,
+      5699,
+      5700,
+      5706,
+      5715,
+      5702
+    ],
+    "scores": [
+      -7.9240193367004395,
+      -8.135002136230469,
+      -8.220396041870117,
+      -11.265558242797852,
+      -11.270421981811523,
+      -11.294363021850586,
+      -11.330280303955078,
+      -11.338879585266113,
+      -11.370182991027832,
+      -11.372114181518555
+    ],
+    "latency_ms": 334.09
+  },
+  {
+    "case_id": "no_relevant_evidence_variant_1",
+    "trial": 2,
+    "user": "Aisha Khan",
+    "user_id": "USR-00003",
+    "mode": "graph",
+    "question": "What will Meridian's revenue be in the year 2040?",
+    "status": "success",
+    "error": "",
+    "hit_at_10": null,
+    "mrr_at_10": 0.0,
+    "ndcg_at_10": 0.0,
+    "acl_pass": true,
+    "forbidden_returned": [],
+    "expected_returned": [],
+    "returned_sources": [
+      "HR-001",
+      "HR-002",
+      "HR-004"
+    ],
+    "result_count": 6,
+    "chunk_ids": [
+      5698,
+      5699,
+      5703,
+      5705,
+      5707,
+      5713
+    ],
+    "scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "latency_ms": 34.32
   }
 ]
