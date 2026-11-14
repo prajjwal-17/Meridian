@@ -153,21 +153,31 @@ def authorized_chunk_ids(
 
     from app.models import DocumentChunk
 
+    if chunk_ids is not None and not chunk_ids:
+        return set()
+    # Missing identity can never read anything; skip the database entirely.
+    if not _valid_text(context.user_id):
+        return set()
+
+    # Evaluate the ACL once per document (documents are few), then fetch only
+    # the chunk ids of readable documents whose tier snapshot still matches.
+    readable_tiers = {
+        document.id: _valid_text(document.permission_tier)
+        for document in db.query(Document).all()
+        if can_access_document(document, context)
+    }
+    if not readable_tiers:
+        return set()
     query = db.query(
         DocumentChunk.id,
+        DocumentChunk.document_id,
         DocumentChunk.permission_tier,
-        Document,
-    ).join(
-        Document, Document.id == DocumentChunk.document_id
-    )
+    ).filter(DocumentChunk.document_id.in_(list(readable_tiers)))
     if chunk_ids is not None:
-        if not chunk_ids:
-            return set()
         query = query.filter(DocumentChunk.id.in_(chunk_ids))
     return {
         chunk_id
-        for chunk_id, chunk_tier, document in query.all()
+        for chunk_id, document_id, chunk_tier in query.all()
         if _valid_text(chunk_tier)
-        and _valid_text(getattr(document, "permission_tier", None)) == _valid_text(chunk_tier)
-        and can_access_document(document, context)
+        and _valid_text(chunk_tier) == readable_tiers.get(document_id)
     }

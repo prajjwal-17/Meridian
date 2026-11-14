@@ -7,9 +7,9 @@ from app.permissions import PermissionContext, authorized_chunk_ids
 
 def generate_embedding(text: str) -> list[float]:
     """Load the embedding model only when dense search is requested."""
-    from app.embedding import generate_embedding as _generate_embedding
+    from app.embedding import embed_query
 
-    return _generate_embedding(text)
+    return embed_query(text)
 
 
 def semantic_search(
@@ -17,6 +17,7 @@ def semantic_search(
     query: str,
     top_k: int = 5,
     permission_context: PermissionContext | None = None,
+    allowed_ids: set[int] | None = None,
 ) -> list[dict]:
 
     if not query.strip():
@@ -27,9 +28,10 @@ def semantic_search(
 
     # Convert user query into an embedding
     query_embedding = generate_embedding(query)
-    allowed_ids = authorized_chunk_ids(
-        db, permission_context or PermissionContext()
-    )
+    if allowed_ids is None:
+        allowed_ids = authorized_chunk_ids(
+            db, permission_context or PermissionContext()
+        )
     if not allowed_ids:
         return []
 

@@ -29,12 +29,18 @@ def hybrid_search(
     if top_k <= 0 or candidate_k <= 0 or rrf_k <= 0:
         raise ValueError("Search limits must be positive")
 
+    # Resolve the ACL once and share it with both retrievers; each of them
+    # still filters by these ids inside its own query.
+    context = permission_context or PermissionContext()
+    allowed_ids = authorized_chunk_ids(db, context)
+
     # Retrieve candidates independently
     bm25_results = bm25_search(
         db=db,
         query=query,
         top_k=candidate_k,
         permission_context=permission_context,
+        allowed_ids=allowed_ids,
     )
 
     dense_results = semantic_search(
@@ -42,6 +48,7 @@ def hybrid_search(
         query=query,
         top_k=candidate_k,
         permission_context=permission_context,
+        allowed_ids=allowed_ids,
     )
 
     # Store combined rankings
@@ -103,18 +110,8 @@ def hybrid_search(
     if not rerank:
         return ranked_results[:top_k]
 
-    # Defense in depth: resolve ACLs immediately before candidate text reaches
+    # Defense in depth: only candidates inside the resolved ACL set may reach
     # the cross-encoder.
-    candidate_ids = [
-        result["chunk_id"]
-        for result in ranked_results
-        if isinstance(result.get("chunk_id"), int)
-    ]
-    allowed_ids = authorized_chunk_ids(
-        db,
-        permission_context or PermissionContext(),
-        candidate_ids,
-    )
     safe_candidates = [
         result
         for result in ranked_results[:candidate_k]
